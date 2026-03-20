@@ -27,20 +27,74 @@ LEGACY_MAP = {
 
 def build_system_prompt() -> str:
     return (
-        "You are a strict political-rhetoric annotator. Return ONLY valid JSON with keys: "
-        "emotion_appeal, authority_appeal, polarization, presumption, exaggeration, rhetorical_framing, rationale. "
-        "Each label must be 0 or 1. rationale must be one short sentence.\n\n"
-        "Definitions:\n"
-        "emotion_appeal: Language designed to evoke strong emotions rather than neutral factual info.\n"
-        "authority_appeal: References to institutions, laws, experts, or leaders used to legitimize a claim.\n"
-        "polarization: Us-vs-them framing between opposing groups/camps.\n"
-        "presumption: Treating claims as obvious/unquestionable without argument.\n"
-        "exaggeration: Overstatement beyond literal plausibility (e.g., absolute/apocalyptic claims).\n"
-        "rhetorical_framing: Strategic metaphor/analogy/narrative framing shaping interpretation.\n\n"
-        "Rules:\n"
-        "- Label 1 only if explicit evidence appears in the sentence itself.\n"
-        "- If uncertain, prefer 0.\n"
-        "- Return only JSON, no markdown."
+        "You are an annotation assistant for a Natural Language Processing research project.\n\n"
+        "Your task is to label ONE political speech segment according to six rhetorical strategies.\n\n"
+        "This is a MULTI-LABEL classification task.\n"
+        "Each label must be either 0 (absent) or 1 (present).\n\n"
+        "IMPORTANT RULES\n"
+        "- Only label a strategy as 1 if it is clearly expressed in the text itself.\n"
+        "- If the sentence is factual, administrative, descriptive, or neutral → all labels should be 0.\n"
+        "- Do NOT infer meaning from broader context.\n"
+        "- Be conservative: if unsure, choose 0.\n"
+        "- Focus on language use, not political ideology or whether the statement is true.\n\n"
+        "Labels and definitions:\n\n"
+        "emotion_appeal\n"
+        "Language designed to evoke emotions such as fear, hope, pride, sympathy, gratitude, anger, or reassurance.\n"
+        "Examples:\n"
+        "\"Our children deserve a better future.\"\n"
+        "\"We are grateful to those who serve.\"\n"
+        "\"This crisis is hurting families.\"\n\n"
+        "authority_appeal\n"
+        "Language that relies on experts, institutions, legal principles, or official authorities to support a claim.\n"
+        "Examples:\n"
+        "\"According to the World Health Organization...\"\n"
+        "\"The Constitution requires...\"\n"
+        "\"The OPCW confirmed...\"\n\n"
+        "Note: mentioning an institution without using it as support is NOT authority_appeal.\n\n"
+        "polarization\n"
+        "Language creating an \"us vs them\" division or conflict between groups.\n"
+        "Examples:\n"
+        "\"They are taking advantage of us.\"\n"
+        "\"We must stand together against those who threaten our way of life.\"\n\n"
+        "presumption\n"
+        "A claim presented as obvious, necessary, or universally accepted without evidence.\n"
+        "Examples:\n"
+        "\"We must act now.\"\n"
+        "\"This clearly requires action.\"\n"
+        "\"The problem demands immediate reform.\"\n\n"
+        "exaggeration\n"
+        "Hyperbole or absolute language exaggerating scale, certainty, or universality.\n"
+        "Examples:\n"
+        "\"Everyone knows.\"\n"
+        "\"Never before.\"\n"
+        "\"Each and every.\"\n"
+        "\"The greatest threat.\"\n\n"
+        "rhetorical_framing\n"
+        "Strategic wording that shapes how an issue is interpreted using value-based language or narrative framing.\n"
+        "Examples:\n"
+        "\"protect our families\"\n"
+        "\"defend freedom\"\n"
+        "\"economic fairness\"\n"
+        "\"engines of destruction\"\n\n"
+        "If the sentence only reports facts, statistics, or policy details, label rhetorical_framing = 0.\n\n"
+        "Decision priority rules:\n\n"
+        "1. If the sentence is neutral or factual → all labels = 0.\n"
+        "2. emotion_appeal requires clear emotional language.\n"
+        "3. authority_appeal requires explicit reliance on authority.\n"
+        "4. polarization requires explicit group conflict.\n"
+        "5. presumption requires a normative claim presented as obvious.\n"
+        "6. exaggeration requires clear hyperbolic wording.\n"
+        "7. rhetorical_framing requires value-laden interpretation language.\n\n"
+        "Return ONLY valid JSON in this format:\n\n"
+        "{\n"
+        "  \"emotion_appeal\": 0,\n"
+        "  \"authority_appeal\": 0,\n"
+        "  \"polarization\": 0,\n"
+        "  \"presumption\": 0,\n"
+        "  \"exaggeration\": 0,\n"
+        "  \"rhetorical_framing\": 0\n"
+        "}\n\n"
+        "Output ONLY valid JSON and nothing else."
     )
 
 
@@ -70,8 +124,6 @@ def normalize_labels(payload: dict[str, Any]) -> dict[str, Any]:
             normalized[key] = 1 if int(value) == 1 else 0
         except (ValueError, TypeError):
             normalized[key] = 0
-    rationale = payload.get("rationale", "")
-    normalized["rationale"] = str(rationale).strip()
     return normalized
 
 
@@ -91,7 +143,7 @@ def annotate_text(
         "options": {"temperature": temperature},
         "messages": [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": f"Sentence: {text}"},
+            {"role": "user", "content": f"Now label this segment:\n\nTEXT:\n{text}"},
         ],
     }
 
@@ -118,9 +170,8 @@ def apply_column_strategy(df: pd.DataFrame, use_legacy_columns: bool) -> pd.Data
         if label not in df.columns:
             df[label] = ""
         df[label] = df[label].astype("string")
-    if "rationale" not in df.columns:
-        df["rationale"] = ""
-    df["rationale"] = df["rationale"].astype("string")
+    if "rationale" in df.columns:
+        df = df.drop(columns=["rationale"])
 
     if use_legacy_columns:
         for _, legacy in LEGACY_MAP.items():
@@ -152,7 +203,7 @@ def main() -> None:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Do not call Ollama; write zeros and empty rationale for selected rows",
+        help="Do not call Ollama; write zeros for selected rows",
     )
     args = parser.parse_args()
 
@@ -185,7 +236,6 @@ def main() -> None:
 
         if args.dry_run:
             labels = {key: 0 for key in TARGET_LABELS}
-            labels["rationale"] = ""
         else:
             labels = annotate_text(
                 text=text,
@@ -198,7 +248,6 @@ def main() -> None:
 
         for key in TARGET_LABELS:
             df.at[row_index, key] = str(labels[key])
-        df.at[row_index, "rationale"] = labels["rationale"]
 
         if args.use_legacy_columns:
             for source, target in LEGACY_MAP.items():
