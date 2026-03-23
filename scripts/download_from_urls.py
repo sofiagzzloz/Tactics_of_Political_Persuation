@@ -33,6 +33,21 @@ def extract_text(html: str, selector: str) -> str:
     return soup.get_text("\n", strip=True)
 
 
+def selector_for_url(url: str, override: str | None) -> str:
+    if override:
+        return override
+    domain = urlparse(url).netloc.lower()
+    if "presidency.ucsb.edu" in domain:
+        return "div.field-docs-content"
+    if "gov.uk" in domain:
+        return "div.gem-c-govspeak, div.govuk-govspeak, article"
+    if "pm.gov.au" in domain:
+        return "article, .node__content, .content"
+    if "pm.gc.ca" in domain:
+        return "article, .field__item, .page-content, .main-content"
+    return "article, main, body"
+
+
 def read_urls(path: Path) -> list[str]:
     lines = path.read_text(encoding="utf-8").splitlines()
     return [line.strip() for line in lines if line.strip() and not line.strip().startswith("#")]
@@ -44,8 +59,8 @@ def main() -> None:
     parser.add_argument("--out-dir", default="data/raw", help="Output directory for raw .txt files")
     parser.add_argument(
         "--selector",
-        default="div.field-docs-content",
-        help="CSS selector for main content (default: Presidency Project)",
+        default=None,
+        help="Optional CSS selector for main content (overrides auto-detection)",
     )
     parser.add_argument("--sleep", type=float, default=1.0, help="Seconds to sleep between requests")
     parser.add_argument("--user-agent", default="Mozilla/5.0", help="User-Agent header")
@@ -65,7 +80,8 @@ def main() -> None:
     for url in tqdm(urls, desc="Downloading"):
         response = requests.get(url, headers=headers, timeout=30)
         response.raise_for_status()
-        text = extract_text(response.text, args.selector)
+        selector = selector_for_url(url, args.selector)
+        text = extract_text(response.text, selector)
 
         out_path = out_dir / filename_from_url(url)
         out_path.write_text(text, encoding="utf-8")

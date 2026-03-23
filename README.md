@@ -41,6 +41,17 @@ Add URLs to `data/urls/presidential_urls.txt` or `data/urls/congressional_urls.t
 python scripts/download_from_urls.py \
   --urls-file data/urls/presidential_urls.txt \
   --out-dir data/raw
+
+# international sources
+python scripts/download_from_urls.py \
+  --urls-file data/urls/uk_urls.txt \
+  --out-dir data/raw
+python scripts/download_from_urls.py \
+  --urls-file data/urls/canada_urls.txt \
+  --out-dir data/raw
+python scripts/download_from_urls.py \
+  --urls-file data/urls/australia_urls.txt \
+  --out-dir data/raw
 ```
 
 ## Optional Metadata
@@ -54,17 +65,47 @@ You can generate metadata automatically from the URL lists:
 ```bash
 python scripts/extract_metadata.py \
   --urls data/urls/presidential_urls.txt data/urls/congressional_urls.txt \
+        data/urls/uk_urls.txt data/urls/canada_urls.txt data/urls/australia_urls.txt \
   --out data/metadata/speeches_metadata.csv
+
+## International URL Lists
+
+Build UK, Canada, and Australia URL lists (official government sources):
+
+```bash
+python scripts/build_international_url_lists.py \
+  --uk-pages 5 --uk-limit 100 \
+  --canada-pages 5 --canada-limit 100 \
+  --australia-pages 5 --australia-limit 100
+```
 ```
 
 ## Label Columns
 
-The annotation file includes:
-- `emotional`
-- `authority`
+The annotation file uses canonical labels:
+- `emotion_appeal`
+- `authority_appeal`
 - `polarization`
 - `presumption`
 - `exaggeration`
-- `framing`
+- `rhetorical_framing`
 
 Use `1` for present, `0` for absent.
+
+## Ollama Auto-Annotation
+
+Annotate rows using a local Ollama model (default: `gpt-oss:20b`):
+
+```bash
+python scripts/annotate_with_ollama.py \
+  --input dataset/dataset.csv \
+  --output dataset/dataset_annotated.csv \
+  --model gpt-oss:20b \
+  --max-rows 200
+```
+
+Options:
+- `--start-row` and `--max-rows` for chunked annotation runs
+- `--ruleset` controls strictness: `conservative`, `balanced` (default), `recall`
+- `--use-legacy-columns` to also mirror values into `emotional`, `authority`, `framing`
+- `--dry-run` for pipeline validation without calling Ollama
