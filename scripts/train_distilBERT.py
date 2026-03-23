@@ -9,9 +9,11 @@ from transformers import (
 )
 from sklearn.metrics import f1_score, precision_score, recall_score
 import numpy as np
+import os
+import json
+import time
 
-
-df = pd.read_csv("dataset/dataset_annotated.csv")
+df = pd.read_csv("dataset/dataset_annotated_final.csv")
 
 label_cols = [
     "emotion_appeal",
@@ -100,7 +102,7 @@ def compute_metrics(eval_pred):
 
 training_args = TrainingArguments(
     output_dir="models/distilbert",
-    num_train_epochs=5, # was 3, but we can increase it since we have a small dataset and are using a pre-trained model
+    num_train_epochs=5, 
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
     logging_steps=50,
@@ -125,6 +127,30 @@ results = trainer.evaluate(test_dataset)
 print("Test results:", results)
 
 
+run_id = time.strftime("%Y%m%d_%H%M%S")
+RESULTS_DIR = f"results/distilbert_{run_id}"
+os.makedirs(RESULTS_DIR, exist_ok=True)
+
+# save test metrics
+with open(f"{RESULTS_DIR}/test_metrics.json", "w") as f:
+    json.dump(results, f, indent=4)
+
+# save config and label names
+config = {
+    "model_name": "distilbert-base-uncased",
+    "num_labels": num_labels,
+    "label_cols": label_cols,
+    "epochs": 5,
+    "batch_size": 16,
+    "learning_rate": 2e-5
+}
+with open(f"{RESULTS_DIR}/config.json", "w") as f:
+    json.dump(config, f, indent=4)
+
+with open(f"{RESULTS_DIR}/labels.json", "w") as f:
+    json.dump(label_cols, f, indent=4)
+
+
 """"
 to find optimal thresholds for each label, we can predict on the validation set and then iterate over possible thresholds
 this will help us understand if the default 0.5 threshold is appropriate for all labels or if some labels require a different 
@@ -146,6 +172,10 @@ for i, col in enumerate(label_cols):
     best_thresholds.append(best_t)
     print(f"{col}: best threshold={best_t:.2f}, f1={best_f1:.3f}")
 
+# save thresholds
+with open(f"{RESULTS_DIR}/thresholds.json", "w") as f:
+    json.dump(dict(zip(label_cols, best_thresholds)), f, indent=4)
+
 # evluation 
 test_preds = trainer.predict(test_dataset)
 test_probs = torch.sigmoid(torch.tensor(test_preds.predictions)).numpy()
@@ -162,6 +192,11 @@ for i, col in enumerate(label_cols):
 print(f"  f1_micro={f1_score(test_labels, final_preds, average='micro'):.3f}")
 print(f"  f1_macro={f1_score(test_labels, final_preds, average='macro'):.3f}")
 
-# save the model and tokenizer for later use in inference and interpretability
+# sivng predictions to CSV
+preds_df = pd.DataFrame(final_preds, columns=label_cols)
+preds_df["text"] = test_df["text"].values
+preds_df.to_csv(f"{RESULTS_DIR}/test_predictions.csv", index=False)
+
+# saving the model and tokenizer 
 trainer.save_model("models/distilbert_final")
 tokenizer.save_pretrained("models/distilbert_final")
