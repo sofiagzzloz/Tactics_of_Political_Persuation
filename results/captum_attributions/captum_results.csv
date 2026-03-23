@@ -1,0 +1,601 @@
+idx,label,text,token,score,delta
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",utterly,0.08991657942533493,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",government,0.08764038980007172,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",job,0.07818900048732758,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",person,0.0767020732164383,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",hard,0.07230126857757568,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",country,0.07187504321336746,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",every,0.06718874722719193,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",facing,0.061943650245666504,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",affect,-0.05888943374156952,-0.03833925724029541
+769,emotion_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",big,0.055318959057331085,-0.03833925724029541
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",across,-0.12789013981819153,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",rewarding,-0.10939871519804001,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",.,-0.09338127076625824,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",job,-0.07980680465698242,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",made,-0.06166379153728485,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",into,-0.060647252947092056,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",hard,-0.055048614740371704,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",country,-0.05114903673529625,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",big,-0.04917123168706894,0.15195417404174805
+769,authority_appeal,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",this,-0.042339202016592026,0.15195417404174805
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",across,-0.17312276363372803,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",rewarding,-0.1373736560344696,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",person,0.10669252276420593,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",utterly,0.10379927605390549,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",so,0.08979320526123047,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",because,0.0879901647567749,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",government,0.08648280054330826,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",is,0.07456224411725998,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",.,-0.06452594697475433,0.08913998305797577
+769,polarization,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",challenges,-0.053323421627283096,0.08913998305797577
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",because,0.07767283171415329,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",across,-0.073859304189682,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",person,0.05534985661506653,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",is,0.05517227202653885,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",government,0.03174061328172684,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",are,0.03098381869494915,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",.,0.029109783470630646,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",utterly,0.029015284031629562,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",so,0.028806988149881363,0.14166870713233948
+769,presumption,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",rewarding,-0.026587925851345062,0.14166870713233948
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",government,0.07726877927780151,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",every,0.06820254027843475,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",utterly,0.06552475690841675,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",person,0.06390441954135895,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",so,0.06286658346652985,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",because,0.05542850121855736,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",facing,0.04476451128721237,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",across,-0.043786123394966125,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",country,0.042770251631736755,0.1466880440711975
+769,exaggeration,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",what,0.041200507432222366,0.1466880440711975
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",person,0.06189025193452835,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",government,0.05239466205239296,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",so,0.04920260235667229,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",across,-0.04798527806997299,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",utterly,0.04791541397571564,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",because,0.04460029676556587,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",challenges,0.043866418302059174,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",rewarding,0.04035843908786774,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",is,0.036757856607437134,0.001330643892288208
+769,rhetorical_framing,"Government is hard because we are facing into big challenges that affect every single person across our country, which is what has made this job so utterly rewarding.",hard,0.02782503515481949,0.001330643892288208
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",perfect,0.09458796679973602,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",congress,-0.08431278169155121,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",session,-0.07505191117525101,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",we,0.050981003791093826,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",the,-0.05088130012154579,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",ambition,0.04965181276202202,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",days,0.04806841164827347,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",meet,0.04582979902625084,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",this,-0.04319729655981064,0.06902840733528137
+824,emotion_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",worthy,0.042528003454208374,0.06902840733528137
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",congress,0.5080642700195312,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",perfect,-0.15707145631313324,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",ambition,-0.15558011829853058,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",days,-0.13938914239406586,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",the,0.11827631294727325,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",achieve,-0.11735884845256805,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",together,-0.1079941838979721,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",meet,-0.08558695018291473,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",85th,0.07111267000436783,-0.04152610898017883
+824,authority_appeal,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",the,0.06846015900373459,-0.04152610898017883
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",85th,-0.1346426010131836,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",session,-0.1282365471124649,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",days,-0.08508600294589996,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",together,-0.07227137684822083,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",first,-0.062338024377822876,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",achieve,-0.05999411270022392,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",first,-0.05922328308224678,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",.,-0.05775369703769684,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",ambition,-0.055200960487127304,-0.05026721954345703
+824,polarization,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",meet,-0.0493638850748539,-0.05026721954345703
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",85th,-0.11490660160779953,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",congress,-0.06605823338031769,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",session,-0.049676600843667984,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",is,0.04499596729874611,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",together,-0.04172182455658913,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",days,-0.03847728669643402,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",more,-0.028442541137337685,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",.,-0.027111653238534927,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",worthy,-0.02670242078602314,-0.027269363403320312
+824,presumption,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",we,-0.025154562667012215,-0.027269363403320312
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",85th,-0.0983932614326477,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",session,-0.07549256086349487,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",congress,-0.07090534269809723,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",.,-0.04152674973011017,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",a,-0.03440092131495476,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",ambition,0.030525119975209236,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",the,-0.024674877524375916,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",perfect,0.023690734058618546,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",these,-0.023409876972436905,-0.01825791597366333
+824,exaggeration,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",more,-0.023090166971087456,-0.01825791597366333
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",congress,0.09939619898796082,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",ambition,0.07468613982200623,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",meet,0.03547918051481247,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",85th,-0.03495027869939804,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",worthy,0.03482693433761597,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",session,-0.032239437103271484,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",first,-0.029611719772219658,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",",",0.025408675894141197,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",this,-0.025162093341350555,0.045269861817359924
+824,rhetorical_framing,"To achieve a more perfect fidelity to it, I submit, is a worthy ambition as we meet together in these first days of this, the first session of the 85th Congress.",a,-0.02461804263293743,0.045269861817359924
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.1130019873380661,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.0813460722565651,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.07154235243797302,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.05062217265367508,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",to,-0.04548679292201996,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",s,-0.04208855703473091,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",our,0.04088514298200607,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",and,-0.03985806554555893,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",of,-0.037979938089847565,-0.221638023853302
+107,emotion_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",increased,-0.03498257324099541,-0.221638023853302
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.09533023089170456,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.08455690741539001,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.0698021799325943,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",our,-0.05960673838853836,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.053126052021980286,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",weapons,-0.04799354448914528,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",increased,-0.03809782490134239,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",first,-0.034719131886959076,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",chemical,-0.030364789068698883,0.023036837577819824
+107,authority_appeal,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",assad,-0.02991277351975441,0.023036837577819824
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.12465567886829376,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.1015515848994255,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.09919539839029312,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.0730726420879364,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",understanding,-0.05833076313138008,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",our,-0.05624823272228241,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",and,-0.0550835020840168,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",assad,-0.04808305576443672,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",increased,-0.04507141560316086,0.14264297485351562
+107,polarization,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",s,-0.041828449815511703,0.14264297485351562
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.04906853660941124,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.04331335425376892,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.03961879760026932,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",understanding,-0.03709624707698822,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",weapons,-0.028518378734588623,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.02812209725379944,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",our,-0.027876142412424088,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",multiple,-0.02148357592523098,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",and,-0.021221160888671875,0.08665359020233154
+107,presumption,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",chemical,-0.020109904929995537,0.08665359020233154
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.07042568922042847,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.05605200305581093,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.050920065492391586,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.04978557303547859,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",chemical,-0.04366974160075188,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",understanding,-0.037016335874795914,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",weapons,-0.03379073739051819,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",our,-0.030733607709407806,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",s,-0.030355466529726982,0.24050259590148926
+107,exaggeration,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",increased,-0.02697620540857315,0.24050259590148926
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",.,-0.060032252222299576,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",opcw,-0.040983058512210846,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",deployments,-0.034966275095939636,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",s,-0.028146693482995033,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",programme,-0.024431409314274788,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",syria,0.01997702196240425,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",understanding,-0.019740650430321693,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",to,-0.018121393397450447,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",and,-0.017641950398683548,-0.05493330955505371
+107,rhetorical_framing,"First, multiple OPCW deployments to Syria have increased our understanding of the scale and scope of Assad’s chemical weapons programme.",first,-0.016469931229948997,-0.05493330955505371
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.053944118320941925,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.04759005457162857,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",suspended,-0.04488451033830643,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.044809043407440186,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.04287012666463852,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",market,-0.041969045996665955,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",russian,0.03831244260072708,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",30,-0.036316800862550735,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",and,-0.03412168100476265,0.07243835926055908
+921,emotion_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.03381188213825226,0.07243835926055908
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",market,-0.05816001817584038,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.05048726499080658,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",suspended,0.046637993305921555,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",",",-0.04585950821638107,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",of,-0.0444812998175621,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",its,-0.039900556206703186,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.039642270654439926,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",of,-0.03889252245426178,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",its,-0.037330739200115204,-0.013064980506896973
+921,authority_appeal,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",",",-0.03685310482978821,-0.013064980506896973
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",market,-0.06349785625934601,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",40,-0.05574025958776474,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",30,-0.05381569266319275,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.05069165676832199,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.048393625766038895,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",of,-0.04363412410020828,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.039970509707927704,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",",",-0.03979458287358284,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",of,-0.03790117800235748,-0.03739088773727417
+921,polarization,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",ruble,-0.0376429483294487,-0.03739088773727417
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",market,-0.03155019134283066,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",suspended,-0.02600523643195629,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.025980010628700256,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",40,-0.02212587371468544,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",percent,-0.020504111424088478,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",30,-0.02012118324637413,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",percent,-0.018397947773337364,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.018349135294556618,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.017874330282211304,0.0009392201900482178
+921,presumption,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",stock,-0.01765778288245201,0.0009392201900482178
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",market,-0.030235974118113518,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.02836354821920395,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.027839912101626396,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",russian,0.027729066088795662,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",trading,-0.023879600688815117,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",suspended,-0.01911884918808937,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",40,-0.018231049180030823,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.017114579677581787,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",30,-0.016301080584526062,-0.09457442164421082
+921,exaggeration,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.014496410265564919,-0.09457442164421082
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",suspended,-0.03816675394773483,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.03296424821019173,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",has,-0.03255632892251015,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",lost,-0.03048136830329895,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",.,-0.029962146654725075,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",lost,-0.024942629039287567,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",40,-0.023758042603731155,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",30,-0.021402964368462563,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",and,-0.020503204315900803,-0.0701301097869873
+921,rhetorical_framing,"The ruble has already lost 30 percent of its value, the Russian stock market has lost 40 percent of its value, and trading remains suspended.",value,-0.0191129632294178,-0.0701301097869873
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",fascists,0.24567675590515137,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",defeated,0.13820001482963562,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",war,0.11780691891908646,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",we,0.08372502028942108,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",the,-0.0739881694316864,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",by,-0.04475778713822365,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",",",-0.03562053292989731,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",.,-0.034340593963861465,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",the,-0.03152604401111603,0.043068721890449524
+157,emotion_appeal,"We defeated the fascists in the Second World War, side by side.",world,0.0292770117521286,0.043068721890449524
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",fascists,0.1971040815114975,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",world,-0.13337914645671844,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",by,0.13042810559272766,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",.,-0.08709225803613663,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",defeated,0.071396604180336,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",side,-0.058333225548267365,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",war,0.056174956262111664,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",in,0.054284077137708664,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",second,-0.053586315363645554,-0.08104991912841797
+157,authority_appeal,"We defeated the fascists in the Second World War, side by side.",the,0.053332071751356125,-0.08104991912841797
+157,polarization,"We defeated the fascists in the Second World War, side by side.",fascists,0.6150431632995605,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",war,0.3188110589981079,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",defeated,0.3020199239253998,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",by,0.16154611110687256,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",in,0.13406574726104736,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",",",0.08689571171998978,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",the,0.060110121965408325,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",we,0.04878770560026169,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",the,0.04292324557900429,-0.006673216819763184
+157,polarization,"We defeated the fascists in the Second World War, side by side.",second,-0.033783912658691406,-0.006673216819763184
+157,presumption,"We defeated the fascists in the Second World War, side by side.",fascists,0.1847577840089798,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",war,0.09244226664304733,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",we,0.03998839855194092,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",side,-0.035611387342214584,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",side,-0.02986292913556099,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",world,-0.02850932627916336,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",.,-0.02772824838757515,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",second,-0.02544865943491459,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",defeated,0.022597536444664,-0.024062171578407288
+157,presumption,"We defeated the fascists in the Second World War, side by side.",by,0.02200947515666485,-0.024062171578407288
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",fascists,0.1976170688867569,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",defeated,0.155947744846344,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",war,0.13441582024097443,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",we,0.06456400454044342,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",in,0.04196199029684067,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",second,-0.03159284591674805,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",the,-0.020536471158266068,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",.,-0.01856975071132183,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",the,-0.017215527594089508,-0.01749017834663391
+157,exaggeration,"We defeated the fascists in the Second World War, side by side.",",",0.012920239940285683,-0.01749017834663391
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",fascists,0.27419596910476685,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",war,0.09471721947193146,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",defeated,0.06246302276849747,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",side,-0.042805977165699005,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",side,-0.041361771523952484,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",second,-0.035139985382556915,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",we,0.03002534806728363,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",the,0.019261321052908897,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",",",0.018577497452497482,0.04202994704246521
+157,rhetorical_framing,"We defeated the fascists in the Second World War, side by side.",by,-0.011484487913548946,0.04202994704246521
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",workers,0.11785444617271423,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",business,-0.08160585165023804,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",the,-0.07318557798862457,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",leaders,0.06676308065652847,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",.,-0.05811288207769394,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",',0.05029852315783501,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",right,0.04986729472875595,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",but,-0.04841550439596176,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",want,0.0454750694334507,0.0583740696310997
+333,emotion_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hire,-0.044658999890089035,0.0583740696310997
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",business,-0.21195070445537567,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",skills,-0.20600923895835876,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",workers,-0.16153748333454132,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",.,-0.0981614738702774,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hire,-0.09663630276918411,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",i,0.09513229131698608,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",in,-0.07402800023555756,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",find,-0.07290356606245041,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",many,-0.06679806113243103,0.21459901332855225
+333,authority_appeal,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",who,-0.05826787278056145,0.21459901332855225
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",business,-0.29031670093536377,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",skills,-0.19678223133087158,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",.,-0.10875281691551208,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hire,-0.10327601432800293,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",in,-0.07727746665477753,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",find,-0.0761360377073288,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",t,0.06469045579433441,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",right,0.04681648686528206,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",',0.04645921662449837,0.07911539077758789
+333,polarization,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",many,-0.0433277003467083,0.07911539077758789
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",i,-0.07654627412557602,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",workers,0.07211568206548691,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hear,-0.0679195448756218,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",states,0.056604158133268356,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",who,0.049475692212581635,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",want,0.04486145079135895,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",find,-0.0427415706217289,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",right,0.0424681156873703,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",leaders,0.0342693030834198,0.10029929131269455
+333,presumption,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",can,0.033483780920505524,0.10029929131269455
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",business,-0.13127154111862183,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",',0.06992115080356598,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",workers,0.0606396459043026,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",who,0.058291174471378326,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hear,-0.05776374042034149,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",in,-0.05431850254535675,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",skills,-0.05305245518684387,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",leaders,0.046986062079668045,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",states,0.04577277600765228,0.07214522361755371
+333,exaggeration,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",right,0.04305526241660118,0.07214522361755371
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",business,-0.06745202094316483,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",i,-0.0669000893831253,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",leaders,0.06664659082889557,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",right,0.056804366409778595,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",find,-0.05200716480612755,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",workers,0.04687049239873886,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hire,-0.045725904405117035,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",hear,-0.04376126080751419,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",.,-0.04228995367884636,-0.1629302054643631
+333,rhetorical_framing,"I also hear from many business leaders who want to hire in the United States, but can't find workers with the right skills.",the,-0.041317056864500046,-0.1629302054643631
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,us,0.42507824301719666,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,beckons,0.29126185178756714,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,hope,0.28633832931518555,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,century,0.11487482488155365,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,onward,0.08840230107307434,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,of,-0.08182304352521896,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,that,0.07035358250141144,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,.,-0.0554313063621521,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,the,0.0441841296851635,0.028667092323303223
+267,emotion_appeal,This is the hope that beckons us onward in this century of trial.,this,0.03482532128691673,0.028667092323303223
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,.,-0.20186781883239746,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,onward,-0.1898239403963089,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,century,-0.18684150278568268,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,hope,-0.17492853105068207,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,trial,0.12752920389175415,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,this,-0.10968218743801117,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,is,-0.106109619140625,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,in,0.09392156451940536,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,of,-0.06546413898468018,-0.10118889808654785
+267,authority_appeal,This is the hope that beckons us onward in this century of trial.,that,-0.04431895166635513,-0.10118889808654785
+267,polarization,This is the hope that beckons us onward in this century of trial.,.,-0.24315258860588074,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,us,0.21131619811058044,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,of,-0.130676731467247,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,this,-0.12741516530513763,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,beckons,0.11301759630441666,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,is,-0.10274875909090042,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,onward,-0.09072574228048325,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,in,0.08795292675495148,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,trial,-0.05355767160654068,-0.047899335622787476
+267,polarization,This is the hope that beckons us onward in this century of trial.,century,-0.0520925335586071,-0.047899335622787476
+267,presumption,This is the hope that beckons us onward in this century of trial.,that,0.0811404436826706,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,onward,-0.07828383892774582,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,this,-0.0696050375699997,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,the,0.06522955000400543,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,.,-0.06469893455505371,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,in,0.05226786807179451,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,us,0.049940578639507294,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,trial,0.0457184836268425,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,century,-0.03917341306805611,-0.027915526181459427
+267,presumption,This is the hope that beckons us onward in this century of trial.,beckons,0.016325751319527626,-0.027915526181459427
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,us,0.19131013751029968,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,beckons,0.15527001023292542,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,.,-0.12875624001026154,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,hope,0.09894184023141861,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,this,-0.081386998295784,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,century,0.06772757321596146,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,that,0.05839219689369202,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,of,-0.0544242188334465,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,in,0.054261066019535065,-0.026951581239700317
+267,exaggeration,This is the hope that beckons us onward in this century of trial.,is,-0.03547687083482742,-0.026951581239700317
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,us,0.22248908877372742,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,hope,0.1835942417383194,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,beckons,0.14142221212387085,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,that,0.11141658574342728,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,century,0.09720820188522339,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,onward,0.05783442407846451,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,the,0.04968264698982239,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,this,-0.04649236425757408,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,of,-0.04162519425153732,0.05479550361633301
+267,rhetorical_framing,This is the hope that beckons us onward in this century of trial.,in,0.0333622470498085,0.05479550361633301
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,union,0.2608209252357483,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,who,0.25838521122932434,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,moment,0.13828973472118378,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.1355537474155426,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,we,0.12438173592090607,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,history,0.09972655773162842,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,face,0.08969680964946747,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,the,-0.08830955624580383,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,unprecedented,0.07465256005525589,0.0489727258682251
+480,emotion_appeal,Now it's we who face an unprecedented moment in the history of the Union.,of,-0.05018848925828934,0.0489727258682251
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.30914992094039917,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,face,-0.13154718279838562,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,unprecedented,-0.12099546194076538,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,now,-0.09530405700206757,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,an,-0.08969150483608246,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,of,-0.07787498086690903,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,it,-0.07779441773891449,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,we,0.07641751319169998,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,',-0.07239009439945221,-0.09345114231109619
+480,authority_appeal,Now it's we who face an unprecedented moment in the history of the Union.,who,-0.05401960015296936,-0.09345114231109619
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.3155669569969177,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,who,0.17360033094882965,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,face,0.1451183259487152,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,union,0.12791115045547485,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,we,0.11377878487110138,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,an,-0.10914237797260284,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,the,-0.09520049393177032,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,of,-0.09465990215539932,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,unprecedented,-0.06961879134178162,-0.034187257289886475
+480,polarization,Now it's we who face an unprecedented moment in the history of the Union.,',-0.03995838388800621,-0.034187257289886475
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,face,0.14251667261123657,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,who,0.11408094316720963,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,union,0.1139509528875351,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.10403121262788773,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,it,0.07848884165287018,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,history,-0.07486436516046524,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,unprecedented,-0.07181157171726227,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,we,0.07157662510871887,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,the,-0.05994093418121338,0.00863732397556305
+480,presumption,Now it's we who face an unprecedented moment in the history of the Union.,an,-0.054388903081417084,0.00863732397556305
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,who,0.17564727365970612,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,face,0.16343775391578674,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.134303480386734,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,union,0.1122177466750145,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,we,0.10354945063591003,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,the,-0.07461538165807724,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,moment,0.06006032973527908,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,it,0.05664311349391937,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,now,0.04532868415117264,0.003594428300857544
+480,exaggeration,Now it's we who face an unprecedented moment in the history of the Union.,an,-0.043699249625205994,0.003594428300857544
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,who,0.19396622478961945,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,union,0.14830118417739868,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,we,0.07746955752372742,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,.,-0.07604249566793442,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,history,0.05664286017417908,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,moment,0.048127856105566025,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,the,-0.03356989100575447,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,unprecedented,0.032404884696006775,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,in,0.030316241085529327,0.04873001575469971
+480,rhetorical_framing,Now it's we who face an unprecedented moment in the history of the Union.,the,0.026703018695116043,0.04873001575469971
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,parents,0.07823829352855682,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,if,-0.06687009334564209,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.06252393126487732,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.04348349943757057,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,ask,0.04278569668531418,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,the,-0.038250863552093506,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,and,-0.03681550174951553,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,can,-0.03635884076356888,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,extra,-0.03143575042486191,0.014689505100250244
+721,emotion_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,house,0.026411937549710274,0.014689505100250244
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.09169499576091766,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,house,-0.09080152213573456,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,help,-0.08914004266262054,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.08022518455982208,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,make,-0.07797785103321075,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,and,-0.07028699666261673,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,you,-0.06833326816558838,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,your,-0.06209205836057663,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,dinner,-0.05424422770738602,-0.10122621059417725
+721,authority_appeal,Ask your parents if you can help them make dinner and do extra cleaning around the house.,extra,-0.040730707347393036,-0.10122621059417725
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.11923857033252716,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,house,-0.103705033659935,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,and,-0.09253323078155518,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,help,-0.09138139337301254,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.0764676108956337,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,make,-0.07637281715869904,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,dinner,-0.07034461945295334,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,your,-0.06804941594600677,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,you,-0.06333566457033157,0.038398146629333496
+721,polarization,Ask your parents if you can help them make dinner and do extra cleaning around the house.,cleaning,-0.05097229778766632,0.038398146629333496
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,you,-0.06742800772190094,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.0658486858010292,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,your,-0.04804808646440506,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,the,-0.04366214573383331,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,around,-0.04282379895448685,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,dinner,-0.03778734803199768,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.03021434135735035,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,house,-0.029278423637151718,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,extra,-0.02638043463230133,-0.07022041082382202
+721,presumption,Ask your parents if you can help them make dinner and do extra cleaning around the house.,do,0.026274871081113815,-0.07022041082382202
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.09412716329097748,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,you,-0.08822435140609741,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,your,-0.07839775085449219,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,the,-0.06423038244247437,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,and,-0.06375522911548615,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,if,-0.05661177635192871,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,around,-0.05579288303852081,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.0500718429684639,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,help,-0.04742293804883957,-0.11825066804885864
+721,exaggeration,Ask your parents if you can help them make dinner and do extra cleaning around the house.,make,-0.04487950727343559,-0.11825066804885864
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,them,-0.06480903923511505,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,you,-0.055618319660425186,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,if,-0.04211954399943352,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,.,-0.03961419686675072,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,the,-0.03789931535720825,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,parents,0.025495309382677078,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,around,-0.024992862716317177,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,ask,0.023402782157063484,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,extra,-0.01803458482027054,0.02079838514328003
+721,rhetorical_framing,Ask your parents if you can help them make dinner and do extra cleaning around the house.,and,-0.016829591244459152,0.02079838514328003
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,free,0.1143827810883522,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,.,-0.08940517902374268,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,we,0.08382466435432434,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,of,-0.04984162002801895,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,ideas,0.03736765682697296,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,from,-0.03008989617228508,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,the,-0.014462885446846485,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,place,0.012661527842283249,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,where,0.011704164557158947,0.03912176191806793
+719,emotion_appeal,A place where we benefit from the free exchange of ideas.,benefit,0.0028978772461414337,0.03912176191806793
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,where,-0.2274666428565979,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,exchange,-0.22315672039985657,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,place,-0.22212694585323334,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,.,-0.21470676362514496,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,of,-0.12474940717220306,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,benefit,-0.1099075898528099,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,ideas,-0.10566910356283188,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,free,-0.08200225234031677,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,from,-0.07188364863395691,-0.13277268409729004
+719,authority_appeal,A place where we benefit from the free exchange of ideas.,a,-0.0420801043510437,-0.13277268409729004
+719,polarization,A place where we benefit from the free exchange of ideas.,.,-0.23461070656776428,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,exchange,-0.17882250249385834,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,of,-0.14788728952407837,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,place,-0.1456390619277954,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,where,-0.12220698595046997,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,benefit,-0.10639365017414093,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,ideas,-0.044484641402959824,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,from,-0.04367877542972565,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,free,0.026942536234855652,-0.03625297546386719
+719,polarization,A place where we benefit from the free exchange of ideas.,we,0.021969830617308617,-0.03625297546386719
+719,presumption,A place where we benefit from the free exchange of ideas.,exchange,-0.1117883026599884,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,.,-0.1035807877779007,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,a,0.05667363852262497,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,benefit,-0.05299345776438713,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,where,0.049451664090156555,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,free,0.042546145617961884,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,from,-0.041950859129428864,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,place,0.03498294949531555,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,we,-0.02421625703573227,-0.06053142249584198
+719,presumption,A place where we benefit from the free exchange of ideas.,of,-0.022572651505470276,-0.06053142249584198
+719,exaggeration,A place where we benefit from the free exchange of ideas.,.,-0.0907706692814827,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,ideas,-0.08925454318523407,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,exchange,-0.08346804976463318,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,of,-0.06572306156158447,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,benefit,-0.054912716150283813,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,the,-0.044070955365896225,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,place,-0.03859749808907509,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,free,0.03584136813879013,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,where,-0.0242132730782032,-0.08921504020690918
+719,exaggeration,A place where we benefit from the free exchange of ideas.,from,-0.021122263744473457,-0.08921504020690918
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,ideas,0.11301538348197937,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,free,0.08937469869852066,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,.,-0.08921439945697784,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,where,0.06378153711557388,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,a,0.06174622103571892,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,exchange,-0.06025627255439758,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,place,0.0592411607503891,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,benefit,0.032758597284555435,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,we,0.021905113011598587,0.06286904215812683
+719,rhetorical_framing,A place where we benefit from the free exchange of ideas.,the,0.020072653889656067,0.06286904215812683
