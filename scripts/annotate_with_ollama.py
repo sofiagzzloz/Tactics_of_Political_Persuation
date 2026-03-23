@@ -25,17 +25,20 @@ LEGACY_MAP = {
 }
 
 
-def build_system_prompt() -> str:
-    return (
+def build_system_prompt(ruleset: str) -> str:
+    ruleset = ruleset.lower().strip()
+    if ruleset not in {"conservative", "balanced", "recall"}:
+        raise ValueError("ruleset must be one of: conservative, balanced, recall")
+
+    base_prompt = (
         "You are an annotation assistant for a Natural Language Processing research project.\n\n"
         "Your task is to label ONE political speech segment according to six rhetorical strategies.\n\n"
         "This is a MULTI-LABEL classification task.\n"
         "Each label must be either 0 (absent) or 1 (present).\n\n"
         "IMPORTANT RULES\n"
         "- Only label a strategy as 1 if it is clearly expressed in the text itself.\n"
-        "- If the sentence is factual, administrative, descriptive, or neutral → all labels should be 0.\n"
+        "- If the sentence is factual, administrative, descriptive, or neutral with no rhetorical intent → all labels should be 0.\n"
         "- Do NOT infer meaning from broader context.\n"
-        "- Be conservative: if unsure, choose 0.\n"
         "- Focus on language use, not political ideology or whether the statement is true.\n\n"
         "Labels and definitions:\n\n"
         "emotion_appeal\n"
@@ -85,6 +88,13 @@ def build_system_prompt() -> str:
         "5. presumption requires a normative claim presented as obvious.\n"
         "6. exaggeration requires clear hyperbolic wording.\n"
         "7. rhetorical_framing requires value-laden interpretation language.\n\n"
+        "Positive lexical cues (not exhaustive):\n"
+        "- emotion_appeal: families, children, hope, fear, gratitude, duty, sacrifice, suffering, protect, secure\n"
+        "- authority_appeal: according to, experts, commission, constitution, court, official report\n"
+        "- polarization: we/our people vs they/them, enemies, those people, elites vs ordinary citizens\n"
+        "- presumption: obviously, clearly, must, cannot wait, there is no alternative\n"
+        "- exaggeration: always, never, everyone, no one, unprecedented, greatest, worst, every single\n"
+        "- rhetorical_framing: freedom, fairness, justice, security, responsibility, renewal, betrayal\n\n"
         "Return ONLY valid JSON in this format:\n\n"
         "{\n"
         "  \"emotion_appeal\": 0,\n"
@@ -96,6 +106,29 @@ def build_system_prompt() -> str:
         "}\n\n"
         "Output ONLY valid JSON and nothing else."
     )
+
+    if ruleset == "conservative":
+        style_rules = (
+            "\n\nCalibration mode: conservative\n"
+            "- If unsure, choose 0.\n"
+            "- Require explicit, unambiguous wording for each positive label.\n"
+        )
+    elif ruleset == "balanced":
+        style_rules = (
+            "\n\nCalibration mode: balanced\n"
+            "- Do not default to all-zero when there are clear rhetorical cues.\n"
+            "- If wording directly signals a category (especially emotion_appeal, presumption, or exaggeration), choose 1.\n"
+            "- Use 0 only when cues are weak or absent.\n"
+        )
+    else:
+        style_rules = (
+            "\n\nCalibration mode: recall\n"
+            "- Prioritize capturing plausible rhetorical strategies over strict minimalism.\n"
+            "- If strong lexical cues are present, prefer 1 even when wording is somewhat implicit.\n"
+            "- Still avoid unsupported inference from external context.\n"
+        )
+
+    return base_prompt + style_rules
 
 
 def extract_json_object(text: str) -> dict[str, Any]:
@@ -134,8 +167,9 @@ def annotate_text(
     timeout: int,
     retries: int,
     temperature: float,
+    ruleset: str,
 ) -> dict[str, Any]:
-    system_prompt = build_system_prompt()
+    system_prompt = build_system_prompt(ruleset)
     payload = {
         "model": model,
         "format": "json",
@@ -194,6 +228,12 @@ def main() -> None:
     parser.add_argument("--timeout", type=int, default=120)
     parser.add_argument("--retries", type=int, default=2)
     parser.add_argument("--temperature", type=float, default=0.1)
+    parser.add_argument(
+        "--ruleset",
+        choices=["conservative", "balanced", "recall"],
+        default="balanced",
+        help="Prompt calibration profile for label strictness",
+    )
     parser.add_argument("--sleep", type=float, default=0.0, help="Optional delay between requests")
     parser.add_argument(
         "--use-legacy-columns",
@@ -244,6 +284,7 @@ def main() -> None:
                 timeout=args.timeout,
                 retries=args.retries,
                 temperature=args.temperature,
+                ruleset=args.ruleset,
             )
 
         for key in TARGET_LABELS:

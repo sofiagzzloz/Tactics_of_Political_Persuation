@@ -82,13 +82,13 @@ python scripts/build_international_url_lists.py \
 
 ## Label Columns
 
-The annotation file includes:
-- `emotional`
-- `authority`
+The annotation file uses canonical labels:
+- `emotion_appeal`
+- `authority_appeal`
 - `polarization`
 - `presumption`
 - `exaggeration`
-- `framing`
+- `rhetorical_framing`
 
 Use `1` for present, `0` for absent.
 
@@ -106,5 +106,6 @@ python scripts/annotate_with_ollama.py \
 
 Options:
 - `--start-row` and `--max-rows` for chunked annotation runs
+- `--ruleset` controls strictness: `conservative`, `balanced` (default), `recall`
 - `--use-legacy-columns` to also mirror values into `emotional`, `authority`, `framing`
 - `--dry-run` for pipeline validation without calling Ollama
