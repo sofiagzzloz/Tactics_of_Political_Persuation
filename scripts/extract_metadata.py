@@ -26,12 +26,32 @@ def read_urls(paths: list[Path]) -> list[str]:
     return urls
 
 
-def extract_speaker(soup: BeautifulSoup) -> str:
+def extract_speaker(soup: BeautifulSoup, domain: str) -> str:
     people_links = soup.select('a[href*="/people/"]')
     for link in people_links:
         text = link.get_text(strip=True)
         if text:
             return text
+
+    uk_people_links = soup.select('a[href*="/government/people/"]')
+    for link in uk_people_links:
+        text = link.get_text(strip=True)
+        if text:
+            return text
+
+    meta_author = soup.select_one('meta[name="author"], meta[property="article:author"]')
+    if meta_author and meta_author.get("content"):
+        return meta_author["content"].strip()
+
+    body_text = soup.get_text("\n", strip=True)
+    hon_match = re.search(r"\bThe\s+Hon\s+([A-Za-z .'-]+)\b", body_text)
+    if hon_match:
+        return hon_match.group(1).strip()
+
+    if "pm.gov.au" in domain:
+        pm_match = re.search(r"\bPrime Minister\s+([A-Za-z .'-]+)\b", body_text)
+        if pm_match:
+            return pm_match.group(1).strip()
 
     title = soup.select_one("h1")
     if title:
@@ -58,6 +78,12 @@ def extract_year(soup: BeautifulSoup) -> str:
             date_text = node.get_text(" ", strip=True)
             break
 
+    meta_date = soup.select_one(
+        'meta[property="article:published_time"], meta[name="dcterms.date"], meta[name="date"]'
+    )
+    if meta_date and meta_date.get("content"):
+        date_text = meta_date["content"]
+
     if not date_text:
         body_text = soup.get_text("\n", strip=True)
         date_match = re.search(
@@ -76,7 +102,13 @@ def main() -> None:
     parser.add_argument(
         "--urls",
         nargs="+",
-        default=["data/urls/presidential_urls.txt", "data/urls/congressional_urls.txt"],
+        default=[
+            "data/urls/presidential_urls.txt",
+            "data/urls/congressional_urls.txt",
+            "data/urls/uk_urls.txt",
+            "data/urls/canada_urls.txt",
+            "data/urls/australia_urls.txt",
+        ],
         help="One or more URL list files",
     )
     parser.add_argument("--out", default="data/metadata/speeches_metadata.csv")
@@ -96,11 +128,12 @@ def main() -> None:
         response = requests.get(url, headers=headers, timeout=30)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "lxml")
+        domain = urlparse(url).netloc.lower()
         rows.append(
             {
                 "file_name": filename_from_url(url),
                 "url": url,
-                "speaker": extract_speaker(soup),
+                "speaker": extract_speaker(soup, domain),
                 "year": extract_year(soup),
             }
         )
