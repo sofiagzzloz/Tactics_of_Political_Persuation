@@ -1,0 +1,9 @@
+{
+    "model": "TF-IDF + Logistic Regression (OneVsRest)",
+    "vectorizer": "TfidfVectorizer(max_features=15000, ngram_range=(1,2), sublinear_tf=True)",
+    "classifier": "LogisticRegression(class_weight=balanced, C=1.0)",
+    "data": "dataset/dataset_annotated_final.csv",
+    "train_size": 700,
+    "val_size": 150,
+    "test_size": 150
+}

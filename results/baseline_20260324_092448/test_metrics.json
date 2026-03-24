@@ -1,0 +1,42 @@
+{
+    "emotion_appeal": {
+        "f1": 0.5938,
+        "precision": 0.4935,
+        "recall": 0.7451,
+        "threshold": 0.45
+    },
+    "authority_appeal": {
+        "f1": 0.2,
+        "precision": 0.3333,
+        "recall": 0.1429,
+        "threshold": 0.45
+    },
+    "polarization": {
+        "f1": 0.1111,
+        "precision": 0.1667,
+        "recall": 0.0833,
+        "threshold": 0.45
+    },
+    "presumption": {
+        "f1": 0.5352,
+        "precision": 0.4634,
+        "recall": 0.6333,
+        "threshold": 0.45
+    },
+    "exaggeration": {
+        "f1": 0.1765,
+        "precision": 0.12,
+        "recall": 0.3333,
+        "threshold": 0.35
+    },
+    "rhetorical_framing": {
+        "f1": 0.798,
+        "precision": 0.7043,
+        "recall": 0.9205,
+        "threshold": 0.45
+    },
+    "micro_f1": 0.6164,
+    "macro_f1": 0.4024,
+    "micro_precision": 0.5356,
+    "micro_recall": 0.7259
+}
