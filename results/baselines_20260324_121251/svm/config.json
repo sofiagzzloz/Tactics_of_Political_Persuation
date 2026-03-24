@@ -1,0 +1,5 @@
+{
+    "model": "TF-IDF + LinearSVM (OneVsRest)",
+    "vectorizer": "TfidfVectorizer(max_features=15000, ngram_range=(1,2), sublinear_tf=True)",
+    "classifier": "CalibratedClassifierCV(LinearSVC(class_weight=balanced, C=1.0))"
+}

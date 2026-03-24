@@ -1,0 +1,36 @@
+{
+    "emotion_appeal": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+    },
+    "authority_appeal": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+    },
+    "polarization": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+    },
+    "presumption": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+    },
+    "exaggeration": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+    },
+    "rhetorical_framing": {
+        "f1": 0.7395,
+        "precision": 0.5867,
+        "recall": 1.0
+    },
+    "micro_f1": 0.5072,
+    "macro_f1": 0.1232,
+    "micro_precision": 0.5867,
+    "micro_recall": 0.4467
+}
