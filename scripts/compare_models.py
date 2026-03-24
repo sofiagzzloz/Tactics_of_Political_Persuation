@@ -1,9 +1,8 @@
 """
-Compares the latest baseline run against the latest DistilBERT run
-and produces results/model_comparison.csv for the paper.
+Compares all models (Dummy, LR, SVM, DistilBERT) and saves:
+  results/model_comparison.csv   — full per-label table
 
-Automatically picks the most recent timestamped folder under results/
-for each model type, so you don't need to update paths manually.
+Automatically picks the most recent timestamped folder for each model.
 
 Run:
     python scripts/compare_models.py
@@ -24,91 +23,112 @@ LABEL_COLS = [
     "rhetorical_framing",
 ]
 
-# ── find most recent result folders ──────────────────────────────────────────
-def latest_results(prefix: str) -> str:
+LABEL_SHORT = {
+    "emotion_appeal":    "Emotion",
+    "authority_appeal":  "Authority",
+    "polarization":      "Polarization",
+    "presumption":       "Presumption",
+    "exaggeration":      "Exaggeration",
+    "rhetorical_framing":"Rhet. Framing",
+}
+
+
+# Helpers 
+def latest(prefix):
     folders = sorted(glob.glob(f"results/{prefix}_*/"))
     if not folders:
-        raise FileNotFoundError(
-            f"No results folder matching results/{prefix}_* found. "
-            f"Have you run the corresponding script yet?"
-        )
+        raise FileNotFoundError(f"No results/{prefix}_* folder. Run the script first.")
     return folders[-1]
 
-bert_dir     = latest_results("distilbert")
-baseline_dir = latest_results("baseline")
-print(f"DistilBERT results : {bert_dir}")
-print(f"Baseline results   : {baseline_dir}")
 
-with open(os.path.join(bert_dir,     "test_metrics.json")) as f:
-    bert_agg = json.load(f)
-with open(os.path.join(baseline_dir, "test_metrics.json")) as f:
-    base = json.load(f)
+def per_label_from_predictions(preds_csv):
+    """Recompute per-label F1/P/R by joining predictions against ground truth."""
+    full_df    = pd.read_csv("dataset/dataset_annotated_final.csv").dropna(subset=["text"])
+    preds_df   = pd.read_csv(preds_csv)
+    merged     = preds_df.merge(
+        full_df[["text"] + LABEL_COLS], on="text", how="left", suffixes=("_pred", "_true")
+    )
+    out = {}
+    for col in LABEL_COLS:
+        pc = f"{col}_pred" if f"{col}_pred" in merged.columns else col
+        tc = f"{col}_true" if f"{col}_true" in merged.columns else col
+        if pc == tc:
+            out[col] = {"f1": None, "precision": None, "recall": None}
+            continue
+        yt = merged[tc].fillna(0).astype(int).values
+        yp = merged[pc].fillna(0).astype(int).values
+        out[col] = {
+            "f1":        round(f1_score(yt, yp, zero_division=0), 4),
+            "precision": round(precision_score(yt, yp, zero_division=0), 4),
+            "recall":    round(recall_score(yt, yp, zero_division=0), 4),
+        }
+    return out
 
-# ── recompute per-label DistilBERT metrics from saved predictions ─────────────
-# (train_distilBERT.py saves predictions but not per-label F1 to JSON)
-bert_preds_path = os.path.join(bert_dir, "test_predictions.csv")
-full_df   = pd.read_csv("dataset/dataset_annotated_final.csv").dropna(subset=["text"])
-bert_preds = pd.read_csv(bert_preds_path)
 
-# align ground truth via text match
-merged = bert_preds.merge(
-    full_df[["text"] + LABEL_COLS], on="text", how="left", suffixes=("_pred", "_true")
+def load_model(name, subpath=None):
+    """Load metrics for one model. subpath handles baselines subdirs."""
+    metrics_path = os.path.join(subpath or ".", "test_metrics.json")
+    with open(metrics_path) as f:
+        agg = json.load(f)
+    preds_csv = os.path.join(subpath or ".", "test_predictions.csv")
+    per_label = per_label_from_predictions(preds_csv)
+    return name, agg, per_label
+
+
+# Locate result folders 
+bert_dir      = latest("distilbert")
+baselines_dir = latest("baselines")
+
+print(f"DistilBERT : {bert_dir}")
+print(f"Baselines  : {baselines_dir}")
+
+models = {}
+models["DistilBERT"] = load_model(
+    "DistilBERT", bert_dir
 )
+for model_key, display in [("dummy", "Dummy"), ("lr", "TF-IDF + LR"), ("svm", "TF-IDF + SVM")]:
+    subdir = os.path.join(baselines_dir, model_key)
+    if os.path.exists(subdir):
+        models[display] = load_model(display, subdir)
+    else:
+        print(f"  Warning: {subdir} not found, skipping {display}")
 
-bert_per_label = {}
-for col in LABEL_COLS:
-    pc = f"{col}_pred" if f"{col}_pred" in merged.columns else col
-    tc = f"{col}_true" if f"{col}_true" in merged.columns else col
-    if pc == tc:
-        # no suffix collision — pred and true share same name, can't distinguish
-        # fall back to aggregate only
-        bert_per_label[col] = {"f1": "n/a", "precision": "n/a", "recall": "n/a"}
-        continue
-    y_true = merged[tc].fillna(0).astype(int).values
-    y_pred = merged[pc].fillna(0).astype(int).values
-    bert_per_label[col] = {
-        "f1":        round(f1_score(y_true, y_pred, zero_division=0), 4),
-        "precision": round(precision_score(y_true, y_pred, zero_division=0), 4),
-        "recall":    round(recall_score(y_true, y_pred, zero_division=0), 4),
-    }
-
-# ── build comparison table ────────────────────────────────────────────────────
+# Build comparison table
 rows = []
 for col in LABEL_COLS:
-    b_f1 = base[col]["f1"]
-    d_f1 = bert_per_label[col]["f1"]
-    delta = round(float(d_f1) - float(b_f1), 4) if d_f1 != "n/a" else "n/a"
-    rows.append({
-        "label":                col,
-        "baseline_f1":          b_f1,
-        "baseline_precision":   base[col]["precision"],
-        "baseline_recall":      base[col]["recall"],
-        "distilbert_f1":        d_f1,
-        "distilbert_precision": bert_per_label[col]["precision"],
-        "distilbert_recall":    bert_per_label[col]["recall"],
-        "delta_f1":             delta,
-    })
+    row = {"label": col}
+    for display, (_, agg, per_label) in models.items():
+        f1 = per_label[col]["f1"]
+        row[f"{display}_f1"]        = f1
+        row[f"{display}_precision"] = per_label[col]["precision"]
+        row[f"{display}_recall"]    = per_label[col]["recall"]
+    rows.append(row)
 
-# summary rows
+# Aggregate rows
 for avg in ("micro", "macro"):
-    b_val = base.get(f"{avg}_f1", "n/a")
-    d_val = bert_agg.get(f"eval_f1_{avg}", bert_agg.get(f"{avg}_f1", "n/a"))
-    delta = round(float(d_val) - float(b_val), 4) if b_val != "n/a" and d_val != "n/a" else "n/a"
-    rows.append({
-        "label":                f"--- {avg.upper()} AVG ---",
-        "baseline_f1":          b_val,
-        "baseline_precision":   "",
-        "baseline_recall":      "",
-        "distilbert_f1":        d_val,
-        "distilbert_precision": "",
-        "distilbert_recall":    "",
-        "delta_f1":             delta,
-    })
+    row = {"label": f"--- {avg.upper()} AVG ---"}
+    for display, (_, agg, _pl) in models.items():
+        val = agg.get(f"eval_f1_{avg}", agg.get(f"{avg}_f1", None))
+        row[f"{display}_f1"]        = val
+        row[f"{display}_precision"] = ""
+        row[f"{display}_recall"]    = ""
+    rows.append(row)
 
 table = pd.DataFrame(rows)
-print("\n" + table[["label", "baseline_f1", "distilbert_f1", "delta_f1"]].to_string(index=False))
+
+# Print summary 
+model_names = list(models.keys())
+f1_cols     = [f"{m}_f1" for m in model_names]
+header      = f"{'Label':<22} " + "  ".join(f"{m:>14}" for m in model_names)
+print("\n" + header)
+print("-" * len(header))
+for _, row in table.iterrows():
+    vals = "  ".join(
+        f"{row[c]:>14.4f}" if isinstance(row[c], float) else f"{'n/a':>14}"
+        for c in f1_cols
+    )
+    print(f"{str(row['label']):<22} {vals}")
 
 os.makedirs("results", exist_ok=True)
-out_path = "results/model_comparison.csv"
-table.to_csv(out_path, index=False)
-print(f"\nFull table saved to {out_path}")
+table.to_csv("results/model_comparison.csv", index=False)
+print("\nSaved → results/model_comparison.csv")

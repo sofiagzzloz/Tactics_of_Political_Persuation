@@ -1,0 +1,4 @@
+{
+    "model": "DummyClassifier(strategy=most_frequent, OneVsRest)",
+    "note": "Predicts majority class per label \u2014 serves as performance floor"
+}
