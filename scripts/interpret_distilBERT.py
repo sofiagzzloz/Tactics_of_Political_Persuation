@@ -6,9 +6,9 @@ import numpy as np
 import os
 import json
 
-model = DistilBertForSequenceClassification.from_pretrained("models/distilbert/checkpoint-220")
-model.eval()  
-tokenizer = DistilBertTokenizerFast.from_pretrained("distilbert-base-uncased")
+model = DistilBertForSequenceClassification.from_pretrained("models/distilbert_final")
+model.eval()
+tokenizer = DistilBertTokenizerFast.from_pretrained("models/distilbert_final")
 
 label_cols = [
     "emotion_appeal",
