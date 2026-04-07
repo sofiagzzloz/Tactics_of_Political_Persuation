@@ -1,127 +1,99 @@
-On the 19 of September, a ransomware attack hit a major software supplier used by airports across Europe.
+19 september, ransomware attack hit major software supplier used airport across europe.
 
-Overnight, checks and systems failed, flights were delayed, staff were forced back to pen and paper.
+overnight, check system failed, flight delayed, staff forced back pen paper.
 
-Thousands of people, families, workers and travellers were left stranded.
+thousand people, families, worker traveller left stranded.
 
-It was an attack on a software supplier, a single weak point rippled across a whole sector.
+attack software supplier, single weak point rippled across whole sector.
 
-In the UK , 43% of businesses have experienced a cyber security breach or attack in the last 12 months .
+uk , 43% business experienced cyber security breach attack last 12 month .
 
-We estimate that cyber breaches cost the UK about £15 billion a year – around 0.5% of GDP .
+estimate cyber breach cost uk £15 billion year – around 0.5% gdp .
 
-And while the digital economy, especially AI , offers huge opportunities for growth across many sectors in the economy, none of that potential can be realised without confidence.
+digital economy, especially ai , offer huge opportunity growth across many sector economy, none potential realised without confidence.
 
-People need to trust the systems they use right now, but they still hesitate.
+people need trust system use right now, still hesitate.
 
-They worry about how their data is handled and whether the technologies they rely on are secure.
+worry data handled whether technology rely secure.
 
-By securing our technologies, we protect citizens, their businesses, the economy.
+securing technologies, protect citizens, businesses, economy.
 
-Strong cyber security and supply chain security underpin enterprise, prosperity, and jobs.
+strong cyber security supply chain security underpin enterprise, prosperity, jobs.
 
-That’s why we must do everything we can to protect against these attacks, and support our brilliant tech companies, so they can get on with what they do best.
+that’s must everything protect attacks, support brilliant tech companies, get best.
 
-The UK has some of the strongest cyber defences globally.
+fast-growing cluster expertise cheltenham manchester, well belfast scotland’s cyber cluster spread across several scottish cities.
 
-We have fast-growing clusters of expertise in Cheltenham and Manchester, as well as Belfast and Scotland’s cyber cluster that spreads across several Scottish cities.
+cyber sector third largest world – achieving double-digit growth, year year.
 
-And our cyber sector is the third largest in the world – achieving double-digit growth, year on year.
+backed £210 million, government cyber action plan published last week set government rise meet growing range online threats.
 
-As a government, we also know we must do our part.
+strengthen government’s defences, also setting clear expectation industry.
 
-Backed by over £210 million, the Government Cyber Action Plan published last week sets out how the government will rise to meet the growing range of online threats.
+cyber security resilience bill ensure critical national infrastructure protected.
 
-This will improve digital resilience across the public sector.
+october, wrote ftse 350 company , urging strengthen defence – adopting thing like ‘cyber essentials’ certification.
 
-And as we strengthen government’s defences, we are also setting clear expectations for industry.
+followed similar letter entrepreneur small businesses, november, bespoke advice smaller teams.
 
-The Cyber Security and Resilience Bill will ensure that our critical national infrastructure is protected.
+know thing work: organisation adopt ‘cyber essentials’ 92% less likely claim cyber insurance don’t.
 
-In October, we wrote to FTSE 350 companies , urging them to strengthen their defences – adopting things like our ‘Cyber Essentials’ certification.
+also worked closely industry identify minimum action secure technology economy relies on.
 
-This was followed by a similar letter to entrepreneurs and small businesses, in November, with bespoke advice for smaller teams.
+includes working hand-in-glove ncsc , uk companies, international counterpart develop policy set global standard technology security.
 
-We know these things work: organisations that adopt ‘Cyber Essentials’ are 92% less likely to claim on cyber insurance than those who don’t.
+example, uk ’s ai cyber security code practice developed global standard european telecommunication standard institute.
 
-We have also worked closely with industry to identify the minimum actions to secure the technology that our economy relies on.
+follows footstep psti act: world leading legislation ensure consumer device secure design came force 2024.
 
-This includes working hand-in-glove with the NCSC , UK companies, and international counterparts to develop policies that set a global standard for technology security.
+threat landscape evolving rapidly, adversary becoming sophisticated attack software.
 
-For example, the UK ’s AI Cyber Security Code of Practice has been developed into a global standard through the European Telecommunication Standards Institute.
+software underpins almost every critical service economy, healthcare, transport, national security.
 
-This follows in the footsteps of the PSTI ACT: world leading legislation to ensure consumer devices secure by design that came into force in 2024.
+start address this, department ncsc published software security code practice may last year.
 
-The threat landscape is evolving rapidly, and adversaries are becoming more sophisticated with attacks on software.
+code outline minimum action software supplier take ensure baseline level security across software market.
 
-Software now underpins almost every critical service in our economy, from healthcare, to transport, to national security.
+need ensure action embedded uk supply chain provide business confidence technology need operate grow.
 
-So it’s fundamental to our resilience and public trust.
+currently, 21% organisation say think cyber security buying software.
 
-To start to address this, the Department and the NCSC published the Software Security Code of Practice in May last year.
+one side, push new regulation, stronger government oversight.
 
-This Code outlines the minimum actions that software suppliers should take to ensure a baseline level of security across the software market.
+uk home best software firm anywhere world, we’re lucky great example room today.
 
-But communicating those expectations is just the first step.
+well brilliant international firm invest here, set office here, make uk home.
 
-We now need to ensure that these actions are embedded in UK supply chains to provide businesses with confidence in the technologies they need to operate and to grow.
+believe need learn company – find one leading way celebrate them, role models.
 
-Currently, just 21% of organisations say they think about cyber security when buying software.
+whose leader take safety seriously – accountability top.
 
-On one side, there are those who push for new regulation, and stronger government oversight.
+see forward-thinking security posture throughout supply chains.
 
-On the other, there are those who say ‘do nothing’, businesses will get there themselves – just wait it out.
+uk host burgeoning ecosystem supply chain security experts.
 
-The UK is home to some of the best software firms anywhere in the world, and we’re lucky to have great examples here in this room today.
+includes buyer leading way manage risk supply chains, cyber security expert offering service knowledge disseminate crucial cyber security capabilities.
 
-As well as the brilliant international firms who invest here, set up offices here, and make the UK their home.
+must learn spread habit many organisation possible.
 
-I believe we need to learn from these companies – to find the ones who are leading the way and celebrate them, as role models.
+today proud announce uk ’s new software security ambassador scheme , group leader – 13 companies, total – making public commitment champion secure software role model uk government’s software security code practice.
 
-The firms whose software is developed with security, top of mind.
+code written partnership industry cyber experts, every step, including national cyber security centre.
 
-Who have brilliant communication between buyer and seller.
+national ambassador span whole software field – vendors… …sage, cisco, palo alto networks, hexiosec, zaizi nexor… …to buyer – like lloyds, santander… …to expert advisor – accenture, ncc group, isaca, isc2, salus cyber.
 
-Who offer best-in-class training to their workforce.
+now, hope use position industry leaders, first adopters, spark change sector widely.
 
-And whose leaders take safety seriously – with accountability at the very top.
+voluntary code practice tried-and-true way setting professional standard.
 
-And we see the same forward-thinking security posture throughout supply chains.
+look world health organization’s code practice hand hygiene.
 
-The UK hosts a burgeoning ecosystem of supply chain security experts.
+first introduced 2009, code become global benchmark despite enforced law, helped significantly reduce infection rate hospital draw single, definitive source best practice one place.
 
-This includes buyers leading the way in how they manage risks in their supply chains, and cyber security experts offering their services and knowledge to disseminate crucial cyber security capabilities.
+that’s exactly want software security code practice become.
 
-Now we must learn from them and spread these habits to as many organisations as possible.
+every sector depends software, single trusted reference point lift standard across whole economy.
 
-So today I am very proud to announce the UK ’s new Software Security Ambassador Scheme , a group of leaders – 13 companies, in total – who are making a public commitment to champion secure software and to be role models for the UK government’s Software Security Code of Practice.
+software security code practice set 14 principles, clear expectation software secured supply chain build common understanding vendor buyer level security software supplier responsible for.
 
-This Code has been written in partnership with industry and with cyber experts, at every step, including the National Cyber Security Centre.
-
-And our national ambassadors span the whole software field – from vendors… …Sage, Cisco, and Palo Alto Networks, Hexiosec, Zaizi and Nexor… …to buyers – like Lloyds, and Santander… …to expert advisors – Accenture, NCC Group, ISACA, ISC2, and Salus Cyber.
-
-Now, we hope you will use your position as industry leaders, and first adopters, to spark a change in the sector more widely.
-
-A voluntary code of practice is a tried-and-true way of setting a professional standard.
-
-Look at the World Health Organization’s code of practice for hand hygiene.
-
-First introduced in 2009, the code has become a global benchmark despite not being enforced by law, and has helped to significantly reduce infection rates as hospitals can draw on a single, definitive source of best practice in one place.
-
-That’s exactly what we want the Software Security Code of Practice to become.
-
-Every sector that depends on software, a single trusted reference point that lifts standards across the whole economy.
-
-Our Software Security Code of Practice sets out 14 principles, and clear expectations for how software should be secured in our supply chains to build a common understanding between vendors and buyers of what level of security a software supplier should be responsible for.
-
-I’m delighted to say it’s already being used in the public sector, by the NHS.
-
-So our health service can help to lead by example too.
-
-If we get it right, this could be a real moment of achievement.
-
-Modelling safe, secure tech for the rest of the market.
-
-And perhaps the start of a new, international benchmark too.
-
-And create a better future for all of us, starting here today.
+i’m delighted say it’s already used public sector, nhs.

@@ -12,6 +12,10 @@ import numpy as np
 import os
 import json
 import time
+import nlpaug.augmenter.word as naw
+
+def augment_text(text, augmenter):
+    return augmenter.augment(text)[0]
 
 df = pd.read_csv("dataset/dataset_annotated_final.csv")
 
@@ -24,6 +28,23 @@ label_cols = [
     "rhetorical_framing"
 ]
 num_labels = len(label_cols)
+
+# Augment rare labels
+# augmenter = naw.SynonymAug(aug_src='wordnet')
+# rare_labels = ["authority_appeal", "polarization", "exaggeration"]
+# augmented_rows = []
+
+# for idx, row in df.iterrows():
+#     for label in rare_labels:
+#         if row[label] == 1:
+#             augmented_text = augment_text(row["text"], augmenter)
+#             new_row = row.copy()
+#             new_row["text"] = augmented_text
+#             augmented_rows.append(new_row)
+
+# if augmented_rows:
+#     df_aug = pd.DataFrame(augmented_rows)
+#     df = pd.concat([df, df_aug], ignore_index=True)
 
 # split
 train_df, temp_df = train_test_split(df, test_size=0.3, random_state=42)
@@ -102,13 +123,13 @@ def compute_metrics(eval_pred):
 
 training_args = TrainingArguments(
     output_dir="models/distilbert",
-    num_train_epochs=5, 
+    num_train_epochs=3, 
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
     logging_steps=50,
     save_steps=200,
     save_total_limit=2,
-    learning_rate=2e-5,
+    learning_rate=1e-5,
     weight_decay=0.01,
     use_cpu=True,
 )
