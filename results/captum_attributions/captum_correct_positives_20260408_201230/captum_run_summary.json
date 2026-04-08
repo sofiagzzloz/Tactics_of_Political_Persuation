@@ -1,0 +1,10 @@
+{
+  "subset_rows": 150,
+  "selection_policy": "correct_positives",
+  "selected_label_pairs": 152,
+  "flagged_pairs": 23,
+  "flagged_rate": 0.1513157894736842,
+  "n_steps": 64,
+  "max_length": 128,
+  "delta_threshold": 0.05
+}

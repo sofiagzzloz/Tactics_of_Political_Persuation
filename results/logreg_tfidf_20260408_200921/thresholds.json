@@ -1,0 +1,8 @@
+{
+  "emotion_appeal": 0.45,
+  "authority_appeal": 0.45,
+  "polarization": 0.35,
+  "presumption": 0.5,
+  "exaggeration": 0.35,
+  "rhetorical_framing": 0.45
+}
