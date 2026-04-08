@@ -1,0 +1,116 @@
+label,type,feature,score,frequency,rank
+emotion_appeal,word,children,0.02710120119520409,17,1
+emotion_appeal,word,hope,0.02563519613332562,16,2
+emotion_appeal,word,people,0.022977616348210772,37,3
+emotion_appeal,word,nation,0.020693643737165993,17,4
+emotion_appeal,word,americans,0.018155314647509507,14,5
+emotion_appeal,word,lives,0.01780016016132453,11,6
+emotion_appeal,word,country,0.01743284194012254,19,7
+emotion_appeal,word,times,0.015458973928215047,8,8
+emotion_appeal,word,men,0.014880047439075117,10,9
+emotion_appeal,word,like,0.01406276930720217,13,10
+emotion_appeal,word,thank,0.014056964671553682,7,11
+emotion_appeal,word,long,0.013691382800467375,14,12
+emotion_appeal,word,said,0.013640519118443474,9,13
+emotion_appeal,word,want,0.01309005839219472,11,14
+emotion_appeal,word,families,0.012922905202730421,11,15
+emotion_appeal,bigram,tough times,0.01090909090909091,3,1
+emotion_appeal,bigram,want thank,0.009333743689583979,3,2
+emotion_appeal,bigram,better life,0.008764672059195823,3,3
+emotion_appeal,bigram,men women,0.008279880189370915,4,4
+emotion_appeal,bigram,affairs men,0.007272727272727273,2,5
+emotion_appeal,bigram,face future,0.007272727272727273,2,6
+emotion_appeal,bigram,government people,0.007272727272727273,2,7
+emotion_appeal,bigram,hundreds thousands,0.007272727272727273,2,8
+emotion_appeal,bigram,let forget,0.007272727272727273,2,9
+emotion_appeal,bigram,medical supplies,0.007272727272727273,2,10
+emotion_appeal,bigram,pay tribute,0.007272727272727273,2,11
+emotion_appeal,bigram,peace prosperity,0.007272727272727273,2,12
+emotion_appeal,bigram,people build,0.007272727272727273,2,13
+emotion_appeal,bigram,thank god,0.007272727272727273,2,14
+emotion_appeal,bigram,working families,0.007272727272727273,2,15
+authority_appeal,word,united,0.11383671977440422,8,1
+authority_appeal,word,laws,0.10744990784162568,5,2
+authority_appeal,word,law,0.09473462323686511,5,3
+authority_appeal,word,constitution,0.09295962456553658,5,4
+authority_appeal,word,states,0.0908231243819527,8,5
+authority_appeal,word,international,0.08617051599872605,5,6
+authority_appeal,word,government,0.05974707841378702,5,7
+authority_appeal,bigram,united states,0.10104166666666667,5,1
+authority_appeal,bigram,law enforcement,0.04895833333333333,2,2
+authority_appeal,bigram,federal government,0.046875,2,3
+authority_appeal,bigram,chemical weapons,0.04163600286299702,2,4
+authority_appeal,bigram,united kingdom,0.04163600286299702,2,5
+polarization,word,citizens,0.08025330829205901,5,1
+polarization,word,aggression,0.07672288789556095,5,2
+polarization,word,people,0.07139669965673758,9,3
+polarization,word,world,0.07076910747867782,7,4
+polarization,word,free,0.05406799930567531,6,5
+polarization,word,nations,0.031726501551426964,5,6
+polarization,bigram,free nations,0.05945911857994363,3,1
+polarization,bigram,criminal aliens,0.03219082182019644,2,2
+polarization,bigram,law abiding,0.03219082182019644,2,3
+polarization,bigram,united states,0.005130611189352225,2,4
+presumption,word,need,0.02515239727057236,11,1
+presumption,word,know,0.022311049131363215,9,2
+presumption,word,defense,0.020519820570478305,5,3
+presumption,word,work,0.019550583862631116,14,4
+presumption,word,security,0.01913682128942685,11,5
+presumption,word,true,0.018674237130704333,5,6
+presumption,word,possible,0.01775246951494784,7,7
+presumption,word,free,0.017444357837526805,10,8
+presumption,word,real,0.016504161105182498,5,9
+presumption,word,aggression,0.01618420620492016,6,10
+presumption,word,opportunity,0.01556976408305916,6,11
+presumption,word,right,0.015325390752342192,6,12
+presumption,word,provide,0.015133525032837308,6,13
+presumption,word,ought,0.014998362953250213,5,14
+presumption,word,needed,0.014603623735805808,5,15
+presumption,bigram,social security,0.014420842559938762,3,1
+presumption,bigram,free nations,0.01294649001398478,3,2
+presumption,bigram,affairs men,0.011235955056179775,2,3
+presumption,bigram,know going,0.011235955056179775,2,4
+presumption,bigram,earned income,0.010019410044014325,2,5
+presumption,bigram,private enterprise,0.009590487534755885,2,6
+presumption,bigram,willing work,0.009590487534755885,2,7
+presumption,bigram,states america,0.009041047356724483,3,8
+presumption,bigram,state local,0.008373942522590435,2,9
+presumption,bigram,hard work,0.006369775007517974,2,10
+presumption,bigram,ve worked,0.004999496637071436,2,11
+presumption,bigram,united states,-0.006969547387507196,5,12
+exaggeration,word,america,0.07679421100111726,7,1
+exaggeration,word,world,0.03969611120975793,6,2
+exaggeration,word,people,0.015362401790948527,6,3
+exaggeration,bigram,taken place,0.03571428571428571,2,1
+exaggeration,bigram,human rights,0.0335956416464891,2,2
+exaggeration,bigram,united states,0.027088377723970932,3,3
+rhetorical_framing,word,world,0.021730938470478186,49,1
+rhetorical_framing,word,nation,0.019022065138709084,28,2
+rhetorical_framing,word,america,0.018614989445333026,39,3
+rhetorical_framing,word,peace,0.018277147125792207,28,4
+rhetorical_framing,word,freedom,0.016111297909825312,20,5
+rhetorical_framing,word,law,0.01369355244390338,18,6
+rhetorical_framing,word,american,0.013168648272409315,22,7
+rhetorical_framing,word,best,0.012443710312646607,16,8
+rhetorical_framing,word,good,0.012344011057045256,19,9
+rhetorical_framing,word,work,0.011900347703247393,33,10
+rhetorical_framing,word,democracy,0.011501753777472888,15,11
+rhetorical_framing,word,let,0.011301797112393099,21,12
+rhetorical_framing,word,build,0.011261860551848525,16,13
+rhetorical_framing,word,country,0.010876958286847782,27,14
+rhetorical_framing,word,economy,0.01038754973239059,17,15
+rhetorical_framing,bigram,human rights,0.006968529841456666,4,1
+rhetorical_framing,bigram,free world,0.0056603773584905665,3,2
+rhetorical_framing,bigram,21st century,0.0050755652756015335,3,3
+rhetorical_framing,bigram,military strength,0.0050755652756015335,3,4
+rhetorical_framing,bigram,federal government,0.004808141255666721,4,5
+rhetorical_framing,bigram,social security,0.004808141255666721,4,6
+rhetorical_framing,bigram,law enforcement,0.0044907531927125014,3,7
+rhetorical_framing,bigram,good citizens,0.004243489844778773,3,8
+rhetorical_framing,bigram,standard living,0.0039962264968450446,3,9
+rhetorical_framing,bigram,affairs men,0.0037735849056603774,2,10
+rhetorical_framing,bigram,america going,0.0037735849056603774,2,11
+rhetorical_framing,bigram,america world,0.0037735849056603774,2,12
+rhetorical_framing,bigram,british values,0.0037735849056603774,2,13
+rhetorical_framing,bigram,dangerous weapons,0.0037735849056603774,2,14
+rhetorical_framing,bigram,face future,0.0037735849056603774,2,15
