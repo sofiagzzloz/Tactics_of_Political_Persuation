@@ -4,6 +4,14 @@ import re
 from pathlib import Path
 
 import pandas as pd
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+import nlpaug.augmenter.word as naw
+
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 LABEL_COLUMNS = [
     "emotional",
@@ -18,7 +26,40 @@ LABEL_COLUMNS = [
 def clean_text(text: str) -> str:
     text = re.sub(r"\[.*?\]", "", text)
     text = re.sub(r"\s+", " ", text)
-    return text.strip()
+    text = text.lower()
+    # Remove stop words and lemmatize
+    lemmatizer = WordNetLemmatizer()
+    stop_words = set(stopwords.words('english'))
+    words = text.split()
+    words = [lemmatizer.lemmatize(word) for word in words if word not in stop_words]
+    return " ".join(words).strip()
+
+
+def augment_text(text: str, augmenter) -> str:
+    return augmenter.augment(text)[0]
+
+
+def split_paragraphs(text: str, min_length: int) -> list[str]:
+    paragraphs = re.split(r"\n\s*\n+", text)
+    return [p.strip() for p in paragraphs if len(p.strip()) >= min_length]
+
+
+def split_sentences(text: str) -> list[str]:
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+
+
+def chunk_sentences(sentences: list[str], chunk_size: int) -> list[str]:
+    if chunk_size <= 0:
+        return [" ".join(sentences)] if sentences else []
+    return [" ".join(sentences[i : i + chunk_size]) for i in range(0, len(sentences), chunk_size)]
+
+
+def segment_text(text: str, min_length: int, chunk_size: int) -> list[str]:
+    if chunk_size > 0:
+        sentences = split_sentences(text)
+        chunks = chunk_sentences(sentences, chunk_size)
+        return [c for c in chunks if len(c) >= min_length]
+    return split_paragraphs(text, min_length)
 
 
 def split_paragraphs(text: str, min_length: int) -> list[str]:
