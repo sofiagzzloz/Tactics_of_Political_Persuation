@@ -1,237 +1,250 @@
 """
-run_captum_attributions.py
-──────────────────────────────────────────────────────────────────────────────
-Generates token-level attribution scores for every sentence in the dataset
-using Layer Integrated Gradients on a fine-tuned DistilBERT classifier.
-
-Key improvements over v1:
-  - Runs on the full dataset (or a configurable stratified sample) instead
-    of 10 random rows, giving statistically meaningful aggregations.
-  - Stores signed, L1-normalised attribution scores so values are comparable
-    across sentences of different lengths.
-  - Flags sentences where |convergence delta| > threshold so downstream
-    analysis can filter out unreliable attributions.
-  - Saves both a flat CSV (one row per sentence × label × token) and a
-    structured JSON for any other downstream use.
-  - Prints a short quality report at the end.
+Standardised Captum attribution run for the fine-tuned DistilBERT model.
 """
 
-import torch
-from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
-from captum.attr import LayerIntegratedGradients
-import pandas as pd
-import numpy as np
-import os
+from __future__ import annotations
+
+import argparse
+import datetime as dt
 import json
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import torch
+from captum.attr import LayerIntegratedGradients
 from tqdm import tqdm
+from transformers import DistilBertForSequenceClassification, DistilBertTokenizerFast
 
-# ──────────────────────────────────────────────────────────────────────────────
-# CONFIG
-# ──────────────────────────────────────────────────────────────────────────────
-MODEL_PATH        = "../models/distilbert_final"
-DATASET_PATH      = "../dataset/dataset_annotated_final.csv"
-RESULTS_DIR       = "../results/captum_attributions/captum_result.csv"
+from metrics_utils import LABEL_COLS, apply_thresholds, load_json
 
-# Set SAMPLE_N to None to run on the full dataset.
-# Set to an integer for a stratified sample (balanced across labels).
-SAMPLE_N          = 200          # e.g. 200 for a quick run
 
-MAX_LENGTH        = 128
-N_STEPS           = 100            # IG integration steps; higher = more accurate but slower
-DELTA_THRESHOLD   = 0.05          # flag runs where |delta| exceeds this
-
-LABEL_COLS = [
-    "emotion_appeal",
-    "authority_appeal",
-    "polarization",
-    "presumption",
-    "exaggeration",
-    "rhetorical_framing",
-]
-
-os.makedirs(RESULTS_DIR, exist_ok=True)
-
-# ──────────────────────────────────────────────────────────────────────────────
-# LOAD MODEL
-# ──────────────────────────────────────────────────────────────────────────────
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Using device: {device}")
-
-model     = DistilBertForSequenceClassification.from_pretrained(MODEL_PATH).to(device)
-tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_PATH)
-model.eval()
-
-# ──────────────────────────────────────────────────────────────────────────────
-# LOAD DATA
-# ──────────────────────────────────────────────────────────────────────────────
-df = pd.read_csv(DATASET_PATH)
-print(f"Dataset loaded: {len(df)} rows")
-
-if SAMPLE_N is not None:
-    # Stratified sample: pick rows that have at least one positive label,
-    # balanced so every label is represented roughly equally.
-    df = df.sample(n=min(SAMPLE_N, len(df)), random_state=42).reset_index(drop=True)
-    print(f"Using stratified sample of {len(df)} rows")
-else:
-    df = df.reset_index(drop=True)
-    print("Using full dataset")
-
-# ──────────────────────────────────────────────────────────────────────────────
-# HELPERS
-# ──────────────────────────────────────────────────────────────────────────────
-def encode(text: str) -> dict:
-    return tokenizer(
-        text,
-        return_tensors="pt",
-        truncation=True,
-        padding="max_length",
-        max_length=MAX_LENGTH,
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run Captum attributions on a fixed interpretation subset.")
+    parser.add_argument("--model-dir", default="models/distilbert_final")
+    parser.add_argument("--subset-path", default="splits/interpretation_subset.csv")
+    parser.add_argument("--results-root", default="results/captum_attributions")
+    parser.add_argument("--thresholds-path", default=None)
+    parser.add_argument("--max-length", type=int, default=128)
+    parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--n-steps", type=int, default=64)
+    parser.add_argument("--delta-threshold", type=float, default=0.05)
+    parser.add_argument(
+        "--selection-policy",
+        default="correct_positives",
+        choices=["all", "predicted_positives", "correct_positives"],
     )
+    return parser.parse_args()
 
 
-def model_forward(input_ids, attention_mask):
-    return model(input_ids=input_ids, attention_mask=attention_mask).logits
+def load_subset(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path).copy()
+    df["text"] = df["text"].astype(str)
+    for label in LABEL_COLS:
+        df[label] = df[label].fillna(0).astype(int)
+    if "row_id" not in df.columns:
+        df.insert(0, "row_id", np.arange(len(df), dtype=int))
+    return df
 
 
-def merge_subword_attributions(tokens: list, scores: np.ndarray) -> tuple[list, list]:
-    """
-    Merge WordPiece sub-tokens back into full words, summing their attributions.
-    Skips special tokens ([CLS], [SEP], [PAD]).
-    """
-    SPECIAL = {"[CLS]", "[SEP]", "[PAD]"}
-    merged_words, merged_scores = [], []
-    current_word, current_score = "", 0.0
+@torch.no_grad()
+def predict_probabilities(model, tokenizer, texts, max_length: int, batch_size: int, device: torch.device) -> np.ndarray:
+    probs = []
+    for start in range(0, len(texts), batch_size):
+        batch_texts = texts[start : start + batch_size]
+        encoded = tokenizer(
+            batch_texts,
+            truncation=True,
+            padding=True,
+            max_length=max_length,
+            return_tensors="pt",
+        )
+        encoded = {key: value.to(device) for key, value in encoded.items()}
+        logits = model(**encoded).logits
+        batch_probs = torch.sigmoid(logits).detach().cpu().numpy()
+        probs.append(batch_probs)
+    return np.vstack(probs)
 
-    for tok, score in zip(tokens, scores):
-        if tok in SPECIAL:
+
+def merge_subword_attributions(tokens: list[str], scores: np.ndarray) -> tuple[list[str], list[float]]:
+    special = {"[CLS]", "[SEP]", "[PAD]"}
+    merged_tokens = []
+    merged_scores = []
+    current_token = ""
+    current_score = 0.0
+
+    for token, score in zip(tokens, scores):
+        if token in special:
             continue
-        if tok.startswith("##"):
-            current_word  += tok[2:]
+        if token.startswith("##"):
+            current_token += token[2:]
             current_score += float(score)
         else:
-            if current_word:
-                merged_words.append(current_word)
+            if current_token:
+                merged_tokens.append(current_token)
                 merged_scores.append(current_score)
-            current_word  = tok
+            current_token = token
             current_score = float(score)
 
-    if current_word:
-        merged_words.append(current_word)
+    if current_token:
+        merged_tokens.append(current_token)
         merged_scores.append(current_score)
-
-    return merged_words, merged_scores
-
-
-def l1_normalise(scores: list) -> list:
-    """
-    L1-normalise attribution scores so they sum to 1 in absolute terms.
-    This makes scores comparable across sentences of different lengths.
-    Returns the original list unchanged if the sum is zero.
-    """
-    total = sum(abs(s) for s in scores)
-    if total == 0:
-        return scores
-    return [s / total for s in scores]
+    return merged_tokens, merged_scores
 
 
-# ──────────────────────────────────────────────────────────────────────────────
-# ATTRIBUTIONS
-# ──────────────────────────────────────────────────────────────────────────────
-lig = LayerIntegratedGradients(model_forward, model.distilbert.embeddings)
+def l1_normalise(scores: list[float]) -> list[float]:
+    denom = sum(abs(x) for x in scores)
+    if denom == 0:
+        return list(scores)
+    return [float(x) / denom for x in scores]
 
-results_list = []
-flagged_count = 0
 
-for idx, row in tqdm(df.iterrows(), total=len(df), desc="Sentences"):
-    text   = str(row["text"])
-    inputs = encode(text)
-    input_ids      = inputs["input_ids"].to(device)
-    attention_mask = inputs["attention_mask"].to(device)
-    baseline_ids   = torch.zeros_like(input_ids)
+def resolve_thresholds(model_dir: Path, thresholds_path: str | None) -> dict[str, float]:
+    if thresholds_path:
+        return load_json(thresholds_path)
+    candidate = model_dir / "thresholds.json"
+    if not candidate.exists():
+        raise FileNotFoundError("Could not find thresholds.json. Pass --thresholds-path explicitly.")
+    return load_json(candidate)
 
-    for label_idx, label_name in enumerate(LABEL_COLS):
-        attr, delta = lig.attribute(
-            input_ids,
-            baselines=baseline_ids,
-            additional_forward_args=(attention_mask,),
-            target=label_idx,
-            n_steps=N_STEPS,
-            return_convergence_delta=True,
+
+def selection_reason(true_label: int, pred_label: int, policy: str) -> str | None:
+    if policy == "all":
+        return "all"
+    if policy == "predicted_positives" and pred_label == 1:
+        return "predicted_positive"
+    if policy == "correct_positives" and pred_label == 1 and true_label == 1:
+        return "correct_positive"
+    return None
+
+
+def main() -> None:
+    args = parse_args()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model_dir = Path(args.model_dir)
+    thresholds = resolve_thresholds(model_dir, args.thresholds_path)
+
+    model = DistilBertForSequenceClassification.from_pretrained(model_dir).to(device)
+    tokenizer = DistilBertTokenizerFast.from_pretrained(model_dir)
+    model.eval()
+
+    subset_df = load_subset(args.subset_path)
+    probs = predict_probabilities(model, tokenizer, subset_df["text"].tolist(), args.max_length, args.batch_size, device)
+    preds = apply_thresholds(probs, thresholds, LABEL_COLS)
+    true_labels = subset_df[LABEL_COLS].to_numpy(dtype=int)
+
+    lig = LayerIntegratedGradients(
+        lambda input_ids, attention_mask: model(input_ids=input_ids, attention_mask=attention_mask).logits,
+        model.distilbert.embeddings,
+    )
+
+    run_dir = Path(args.results_root) / f"captum_{args.selection_policy}_{dt.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    json_records = []
+    flat_records = []
+    flagged_count = 0
+    selected_pairs = 0
+
+    for row_idx, row in tqdm(subset_df.iterrows(), total=len(subset_df), desc="Sentences"):
+        text = str(row["text"])
+        encoded = tokenizer(
+            text,
+            return_tensors="pt",
+            truncation=True,
+            padding="max_length",
+            max_length=args.max_length,
         )
+        input_ids = encoded["input_ids"].to(device)
+        attention_mask = encoded["attention_mask"].to(device)
+        baseline_ids = torch.full_like(input_ids, fill_value=tokenizer.pad_token_id)
 
-        # Sum over embedding dimension → one score per token position
-        raw_scores = attr.sum(dim=-1).squeeze(0).detach().cpu().numpy()
-        tokens     = tokenizer.convert_ids_to_tokens(input_ids.squeeze(0))
+        for label_idx, label_name in enumerate(LABEL_COLS):
+            true_label = int(true_labels[row_idx, label_idx])
+            pred_label = int(preds[row_idx, label_idx])
+            reason = selection_reason(true_label, pred_label, args.selection_policy)
+            if reason is None:
+                continue
 
-        words, scores = merge_subword_attributions(tokens, raw_scores)
-        norm_scores   = l1_normalise(scores)
+            selected_pairs += 1
+            attr, delta = lig.attribute(
+                input_ids,
+                baselines=baseline_ids,
+                additional_forward_args=(attention_mask,),
+                target=label_idx,
+                n_steps=args.n_steps,
+                return_convergence_delta=True,
+            )
+            token_scores = attr.sum(dim=-1).squeeze(0).detach().cpu().numpy()
+            tokens = tokenizer.convert_ids_to_tokens(input_ids.squeeze(0))
+            words, merged_scores = merge_subword_attributions(tokens, token_scores)
+            norm_scores = l1_normalise(merged_scores)
 
-        delta_val   = float(delta)
-        is_flagged  = abs(delta_val) > DELTA_THRESHOLD
-        if is_flagged:
-            flagged_count += 1
+            delta_value = float(delta)
+            delta_flagged = abs(delta_value) > args.delta_threshold
+            if delta_flagged:
+                flagged_count += 1
 
-        # Keep ALL tokens with their signed normalised score.
-        # Downstream scripts can filter by sign or magnitude as needed.
-        token_records = [
-            {"token": w, "attribution": round(s, 6), "abs_attribution": round(abs(s), 6)}
-            for w, s in zip(words, norm_scores)
-        ]
+            token_payload = []
+            for word, score in zip(words, norm_scores):
+                token_payload.append({
+                    "token": word,
+                    "attribution": round(float(score), 6),
+                    "abs_attribution": round(abs(float(score)), 6),
+                })
+                flat_records.append(
+                    {
+                        "row_id": int(row["row_id"]),
+                        "label": label_name,
+                        "text": text,
+                        "token": word,
+                        "attribution": round(float(score), 6),
+                        "abs_attribution": round(abs(float(score)), 6),
+                        "probability": round(float(probs[row_idx, label_idx]), 6),
+                        "true_label": true_label,
+                        "pred_label": pred_label,
+                        "selection_reason": reason,
+                        "delta": round(delta_value, 6),
+                        "delta_flagged": delta_flagged,
+                    }
+                )
 
-        results_list.append({
-            "sentence_id":  idx,
-            "label":        label_name,
-            "text":         text,
-            "tokens":       token_records,
-            "delta":        round(delta_val, 6),
-            "delta_flagged": is_flagged,
-        })
+            json_records.append(
+                {
+                    "row_id": int(row["row_id"]),
+                    "label": label_name,
+                    "text": text,
+                    "probability": round(float(probs[row_idx, label_idx]), 6),
+                    "true_label": true_label,
+                    "pred_label": pred_label,
+                    "selection_reason": reason,
+                    "delta": round(delta_value, 6),
+                    "delta_flagged": delta_flagged,
+                    "tokens": token_payload,
+                }
+            )
 
-print(f"\nAttribution complete. Flagged runs (|delta| > {DELTA_THRESHOLD}): "
-      f"{flagged_count} / {len(results_list)}")
+    flat_df = pd.DataFrame(flat_records)
+    flat_df.to_csv(run_dir / "captum_results.csv", index=False)
+    with open(run_dir / "captum_results.json", "w", encoding="utf-8") as f:
+        json.dump(json_records, f, indent=2)
 
-# ──────────────────────────────────────────────────────────────────────────────
-# SAVE JSON
-# ──────────────────────────────────────────────────────────────────────────────
-json_path = os.path.join(RESULTS_DIR, "captum_results.json")
-with open(json_path, "w") as f:
-    json.dump(results_list, f, indent=2)
-print(f"JSON saved → {json_path}")
+    summary = {
+        "subset_rows": int(len(subset_df)),
+        "selection_policy": args.selection_policy,
+        "selected_label_pairs": int(selected_pairs),
+        "flagged_pairs": int(flagged_count),
+        "flagged_rate": float(flagged_count / selected_pairs) if selected_pairs else 0.0,
+        "n_steps": args.n_steps,
+        "max_length": args.max_length,
+        "delta_threshold": args.delta_threshold,
+    }
+    with open(run_dir / "captum_run_summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2)
 
-# ──────────────────────────────────────────────────────────────────────────────
-# SAVE FLAT CSV  (one row per sentence × label × token)
-# ──────────────────────────────────────────────────────────────────────────────
-records = []
-for r in results_list:
-    for tok in r["tokens"]:
-        records.append({
-            "sentence_id":   r["sentence_id"],
-            "label":         r["label"],
-            "text":          r["text"],
-            "token":         tok["token"],
-            "attribution":   tok["attribution"],      # signed, L1-normalised
-            "abs_attribution": tok["abs_attribution"],
-            "delta":         r["delta"],
-            "delta_flagged": r["delta_flagged"],
-        })
+    print(json.dumps(summary, indent=2))
+    print(f"Saved Captum artefacts to {run_dir}")
 
-flat_df = pd.DataFrame(records)
-csv_path = os.path.join(RESULTS_DIR, "captum_results.csv")
-flat_df.to_csv(csv_path, index=False)
-print(f"Flat CSV saved → {csv_path}  ({len(flat_df):,} rows)")
 
-# ──────────────────────────────────────────────────────────────────────────────
-# QUALITY REPORT
-# ──────────────────────────────────────────────────────────────────────────────
-print("\n── Quality report ──────────────────────────────────────────────────────")
-print(f"  Total sentences processed : {flat_df['sentence_id'].nunique()}")
-print(f"  Total label×sentence pairs: {len(results_list)}")
-print(f"  Flagged (unreliable delta): {flagged_count}")
-print(f"  Mean |delta| per label:")
-delta_summary = (
-    flat_df.drop_duplicates(["sentence_id", "label"])
-    .groupby("label")["delta"]
-    .apply(lambda x: round(x.abs().mean(), 5))
-)
-print(delta_summary.to_string())
-print("────────────────────────────────────────────────────────────────────────")
+if __name__ == "__main__":
+    main()

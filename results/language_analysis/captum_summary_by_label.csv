@@ -1,0 +1,4 @@
+label,rows_after_filtering,sentences_after_filtering,unique_tokens,mean_abs_attribution,mean_probability
+emotion_appeal,182,27,5,0.05071021428571428,0.5199298296703297
+presumption,226,26,1,0.03617037610619469,0.5411050442477876
+rhetorical_framing,275,63,3,0.027319385454545455,0.48799912727272726
