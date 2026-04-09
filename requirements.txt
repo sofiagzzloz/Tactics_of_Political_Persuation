@@ -7,8 +7,11 @@ ollama>=0.4.0
 
 torch
 scikit-learn
+joblib
 transformers
 accelerate
 captum
 nltk
 nlpaug
+matplotlib
+seaborn

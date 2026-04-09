@@ -109,3 +109,38 @@ Options:
 - `--ruleset` controls strictness: `conservative`, `balanced` (default), `recall`
 - `--use-legacy-columns` to also mirror values into `emotional`, `authority`, `framing`
 - `--dry-run` for pipeline validation without calling Ollama
+
+## Runnable Hybrid Model Artifacts
+
+Train the hybrid model and export runnable artifacts:
+
+```bash
+python scripts/hybrid_model.py
+```
+
+This creates a timestamped folder like `results/hybrid_YYYYMMDD_HHMMSS/` containing:
+- `hybrid_results.csv` and `results.json` (evaluation summaries)
+- `test_predictions.csv` (prediction-level outputs)
+- `artifacts/` with:
+  - `tfidf_vectorizer.joblib`
+  - `classifier_<label>.joblib` for each label
+  - `thresholds.json`
+  - `metadata.json`
+
+Run inference on a single text:
+
+```bash
+python scripts/infer_hybrid_model.py \
+  --artifacts-dir results/hybrid_YYYYMMDD_HHMMSS/artifacts \
+  --text "We must act now to protect our families."
+```
+
+Run inference on a CSV:
+
+```bash
+python scripts/infer_hybrid_model.py \
+  --artifacts-dir results/hybrid_YYYYMMDD_HHMMSS/artifacts \
+  --input-csv dataset/dataset_for_annotation.csv \
+  --text-column text \
+  --output results/hybrid_predictions.csv
+```

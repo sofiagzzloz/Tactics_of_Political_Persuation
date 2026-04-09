@@ -1,0 +1,37 @@
+{
+  "label_columns": [
+    "emotion_appeal",
+    "authority_appeal",
+    "polarization",
+    "presumption",
+    "exaggeration",
+    "rhetorical_framing"
+  ],
+  "tfidf_max_features": 5000,
+  "tfidf_ngram_range": [
+    1,
+    2
+  ],
+  "bert_model_name": "distilbert-base-uncased",
+  "split": {
+    "train": 700,
+    "val": 150,
+    "test": 150
+  },
+  "train_positive_rates": {
+    "emotion_appeal": 0.25857142857142856,
+    "authority_appeal": 0.04,
+    "polarization": 0.047142857142857146,
+    "presumption": 0.16857142857142857,
+    "exaggeration": 0.05857142857142857,
+    "rhetorical_framing": 0.5228571428571429
+  },
+  "summary": {
+    "micro_f1": 0.6105,
+    "macro_f1": 0.4388,
+    "micro_precision": 0.5537,
+    "micro_recall": 0.6802,
+    "macro_precision": 0.4142,
+    "macro_recall": 0.509
+  }
+}

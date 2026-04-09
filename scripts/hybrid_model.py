@@ -14,8 +14,8 @@ import datetime
 import numpy as np
 import pandas as pd
 import torch
+import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, precision_score, recall_score
@@ -95,6 +95,10 @@ print(f"  Combined features: {X_train_hybrid.shape}")
 print("[4] Training hybrid classifiers...")
 
 results = {}
+y_train_positive_rates = {label: float(y_train[:, idx].mean()) for idx, label in enumerate(LABEL_COLS)}
+y_test_pred_matrix = np.zeros_like(y_test)
+y_test_prob_matrix = np.zeros_like(y_test, dtype=float)
+classifiers: dict[str, RandomForestClassifier] = {}
 
 for label_idx, label_col in enumerate(LABEL_COLS):
     print(f"\n  Training {label_col}...")
@@ -109,6 +113,7 @@ for label_idx, label_col in enumerate(LABEL_COLS):
     )
     
     clf.fit(X_train_hybrid, y_train[:, label_idx])
+    classifiers[label_col] = clf
     
     # Threshold tuning on validation set
     probs = clf.predict_proba(X_val_hybrid)[:, 1]
@@ -122,6 +127,8 @@ for label_idx, label_col in enumerate(LABEL_COLS):
     # Evaluate on test set
     test_probs = clf.predict_proba(X_test_hybrid)[:, 1]
     test_preds = (test_probs > best_t).astype(int)
+    y_test_pred_matrix[:, label_idx] = test_preds
+    y_test_prob_matrix[:, label_idx] = test_probs
     
     test_f1 = f1_score(y_test[:, label_idx], test_preds, zero_division=0)
     test_precision = precision_score(y_test[:, label_idx], test_preds, zero_division=0)
@@ -140,18 +147,69 @@ for label_idx, label_col in enumerate(LABEL_COLS):
 # ============ SAVE RESULTS ============
 print("\n[5] Saving results...")
 
-micro_f1 = np.mean([y_test[:, i] == (clf.predict_proba(X_test_hybrid)[:, 1] > results[LABEL_COLS[i]]["threshold"]).astype(int) for i in range(len(LABEL_COLS))]).mean()
+artifacts_dir = os.path.join(RESULTS_DIR, "artifacts")
+os.makedirs(artifacts_dir, exist_ok=True)
+
+micro_f1 = f1_score(y_test, y_test_pred_matrix, average="micro", zero_division=0)
+macro_f1 = f1_score(y_test, y_test_pred_matrix, average="macro", zero_division=0)
+micro_precision = precision_score(y_test, y_test_pred_matrix, average="micro", zero_division=0)
+micro_recall = recall_score(y_test, y_test_pred_matrix, average="micro", zero_division=0)
+macro_precision = precision_score(y_test, y_test_pred_matrix, average="macro", zero_division=0)
+macro_recall = recall_score(y_test, y_test_pred_matrix, average="macro", zero_division=0)
+
+summary = {
+    "micro_f1": round(float(micro_f1), 4),
+    "macro_f1": round(float(macro_f1), 4),
+    "micro_precision": round(float(micro_precision), 4),
+    "micro_recall": round(float(micro_recall), 4),
+    "macro_precision": round(float(macro_precision), 4),
+    "macro_recall": round(float(macro_recall), 4),
+}
+
+results_payload = {
+    "summary": summary,
+    "per_label": results,
+}
 
 with open(f"{RESULTS_DIR}/results.json", "w") as f:
-    json.dump(results, f, indent=2)
+    json.dump(results_payload, f, indent=2)
 
 results_df = pd.DataFrame(results).T
+results_df.index.name = "label"
 results_df.to_csv(f"{RESULTS_DIR}/hybrid_results.csv")
 
+thresholds = {label: float(results[label]["threshold"]) for label in LABEL_COLS}
+with open(os.path.join(artifacts_dir, "thresholds.json"), "w") as f:
+    json.dump(thresholds, f, indent=2)
+
+metadata = {
+    "label_columns": LABEL_COLS,
+    "tfidf_max_features": 5000,
+    "tfidf_ngram_range": [1, 2],
+    "bert_model_name": "distilbert-base-uncased",
+    "split": {"train": len(train_df), "val": len(val_df), "test": len(test_df)},
+    "train_positive_rates": y_train_positive_rates,
+    "summary": summary,
+}
+with open(os.path.join(artifacts_dir, "metadata.json"), "w") as f:
+    json.dump(metadata, f, indent=2)
+
+joblib.dump(tfidf_vectorizer, os.path.join(artifacts_dir, "tfidf_vectorizer.joblib"))
+for label in LABEL_COLS:
+    joblib.dump(classifiers[label], os.path.join(artifacts_dir, f"classifier_{label}.joblib"))
+
+predictions_df = test_df[["text"]].reset_index(drop=True).copy()
+for idx, label in enumerate(LABEL_COLS):
+    predictions_df[label] = y_test_pred_matrix[:, idx].astype(int)
+    predictions_df[f"{label}_prob"] = np.round(y_test_prob_matrix[:, idx], 6)
+    predictions_df[f"{label}_true"] = y_test[:, idx].astype(int)
+predictions_df.to_csv(f"{RESULTS_DIR}/test_predictions.csv", index=False)
+
 print(f"\nResults saved to {RESULTS_DIR}/")
+print(f"Artifacts saved to {artifacts_dir}/")
 print("\nPer-label F1 scores:")
 for label, metrics in results.items():
     print(f"  {label}: {metrics['test_f1']}")
 
-macro_f1 = np.mean([results[label]["test_f1"] for label in LABEL_COLS])
-print(f"\nMacro F1: {macro_f1:.4f}")
+print(f"\nMicro F1: {summary['micro_f1']:.4f}")
+print(f"Macro F1: {summary['macro_f1']:.4f}")
