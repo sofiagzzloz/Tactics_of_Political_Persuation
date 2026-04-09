@@ -1,0 +1,54 @@
+{
+  "summary": {
+    "micro_f1": 0.6105,
+    "macro_f1": 0.4388,
+    "micro_precision": 0.5537,
+    "micro_recall": 0.6802,
+    "macro_precision": 0.4142,
+    "macro_recall": 0.509
+  },
+  "per_label": {
+    "emotion_appeal": {
+      "threshold": 0.35,
+      "val_f1": 0.7901,
+      "test_f1": 0.5934,
+      "test_precision": 0.675,
+      "test_recall": 0.5294
+    },
+    "authority_appeal": {
+      "threshold": 0.5,
+      "val_f1": 0.0,
+      "test_f1": 0.0,
+      "test_precision": 0.0,
+      "test_recall": 0.0
+    },
+    "polarization": {
+      "threshold": 0.1,
+      "val_f1": 0.1333,
+      "test_f1": 0.6667,
+      "test_precision": 0.6,
+      "test_recall": 0.75
+    },
+    "presumption": {
+      "threshold": 0.15,
+      "val_f1": 0.4898,
+      "test_f1": 0.3962,
+      "test_precision": 0.2763,
+      "test_recall": 0.7
+    },
+    "exaggeration": {
+      "threshold": 0.1,
+      "val_f1": 0.2353,
+      "test_f1": 0.129,
+      "test_precision": 0.0909,
+      "test_recall": 0.2222
+    },
+    "rhetorical_framing": {
+      "threshold": 0.5,
+      "val_f1": 0.8701,
+      "test_f1": 0.8475,
+      "test_precision": 0.8427,
+      "test_recall": 0.8523
+    }
+  }
+}

@@ -3,12 +3,12 @@ Generates all paper figures from the results folder.
 Saves high-resolution PNGs to results/figures/.
 
 Figures produced:
-  fig1_per_label_f1.png        — grouped bar: per-label F1 for all 4 models
+    fig1_per_label_f1.png        — grouped bar: per-label F1 for all models (incl. Hybrid)
   fig2_overall_metrics.png     — bar: micro/macro F1 per model
   fig3_precision_recall.png    — grouped bar: P and R per label for each model
-  fig4_temporal_trends.png     — line chart: label frequency by year
-  fig5_speaker_heatmap.png     — heatmap: top 15 speakers x labels
-  fig6_error_analysis.png      — stacked bar: FP and FN counts per label (DistilBERT)
+    fig4_temporal_trends.png     — line chart: label frequency by year (+ Hybrid summary inset)
+    fig5_speaker_heatmap.png     — heatmap: top 15 speakers x labels (+ Hybrid summary inset)
+    fig6_error_analysis.png      — DistilBERT FP/FN counts + Hybrid proxy error profile
 
 Run:
     python scripts/generate_figures.py
@@ -50,6 +50,7 @@ MODEL_COLORS = {
     "TF-IDF + LR":  "#4878d0",
     "TF-IDF + SVM": "#ee854a",
     "DistilBERT":   "#6acc65",
+    "Hybrid":       "#d65fdb",
 }
 
 plt.rcParams.update({
@@ -94,6 +95,66 @@ def per_label_metrics(preds_csv):
     return np.array(f1s), np.array(precs), np.array(recs)
 
 
+def load_hybrid_metrics():
+    hybrid_dirs = sorted(glob.glob("results/hybrid_*/"))
+    if not hybrid_dirs:
+        return None
+
+    hybrid_dir = hybrid_dirs[-1]
+    candidates = [
+        os.path.join(hybrid_dir, "hybrid_results.csv"),
+        os.path.join(hybrid_dir, "results.csv"),
+    ]
+    hybrid_csv = next((p for p in candidates if os.path.exists(p)), None)
+    if hybrid_csv is None:
+        return None
+
+    df = pd.read_csv(hybrid_csv)
+    if df.columns[0].startswith("Unnamed"):
+        df = df.rename(columns={df.columns[0]: "label"})
+    if "label" not in df.columns:
+        return None
+
+    label_to_row = {
+        str(r["label"]).strip(): r
+        for _, r in df.iterrows()
+        if str(r["label"]).strip() in LABEL_COLS
+    }
+    if any(label not in label_to_row for label in LABEL_COLS):
+        return None
+
+    f1 = np.array([float(label_to_row[label]["test_f1"]) for label in LABEL_COLS])
+    p = np.array([float(label_to_row[label]["test_precision"]) for label in LABEL_COLS])
+    r = np.array([float(label_to_row[label]["test_recall"]) for label in LABEL_COLS])
+
+    micro_f1 = np.nan
+    macro_f1 = float(np.mean(f1))
+    macro_precision = float(np.mean(p))
+    macro_recall = float(np.mean(r))
+
+    summary_json = os.path.join(hybrid_dir, "results.json")
+    if os.path.exists(summary_json):
+        with open(summary_json) as f:
+            payload = json.load(f)
+        if isinstance(payload, dict):
+            summary = payload.get("summary") if isinstance(payload.get("summary"), dict) else payload
+            micro_f1 = summary.get("micro_f1", micro_f1)
+            macro_f1 = summary.get("macro_f1", macro_f1)
+            macro_precision = summary.get("macro_precision", macro_precision)
+            macro_recall = summary.get("macro_recall", macro_recall)
+
+    return {
+        "f1": f1,
+        "precision": p,
+        "recall": r,
+        "micro_f1": micro_f1,
+        "macro_f1": macro_f1,
+        "macro_precision": macro_precision,
+        "macro_recall": macro_recall,
+        "source": hybrid_csv,
+    }
+
+
 # Load all model results
 bert_dir      = latest("distilbert")
 baselines_dir = latest("baselines")
@@ -127,7 +188,14 @@ for key, display in [("dummy", "Dummy"), ("lr", "TF-IDF + LR"), ("svm", "TF-IDF 
         "macro_f1": agg.get("macro_f1", 0),
     }
 
-model_names = ["Dummy", "TF-IDF + LR", "TF-IDF + SVM", "DistilBERT"]
+# Hybrid (aggregated test metrics)
+hybrid_payload = load_hybrid_metrics()
+if hybrid_payload is not None:
+    all_models["Hybrid"] = hybrid_payload
+else:
+    print("Hybrid metrics not found; skipping Hybrid in figures.")
+
+model_names = ["Dummy", "TF-IDF + LR", "TF-IDF + SVM", "DistilBERT", "Hybrid"]
 model_names = [m for m in model_names if m in all_models]
 
 print(f"Models loaded: {model_names}")
@@ -189,17 +257,22 @@ x2    = np.arange(len(model_names))
 bar_w2 = 0.35
 
 fig, ax = plt.subplots(figsize=(8, 5))
-b1 = ax.bar(x2 - bar_w2 / 2, micro_vals, bar_w2, label="Micro F1",
+micro_plot_vals = [0.0 if pd.isna(v) else v for v in micro_vals]
+b1 = ax.bar(x2 - bar_w2 / 2, micro_plot_vals, bar_w2, label="Micro F1",
             color=[MODEL_COLORS[m] for m in model_names], edgecolor="white", linewidth=0.5)
 b2 = ax.bar(x2 + bar_w2 / 2, macro_vals, bar_w2, label="Macro F1",
             color=[MODEL_COLORS[m] for m in model_names], edgecolor="white", linewidth=0.5,
             alpha=0.6, hatch="//")
 
-for bars in [b1, b2]:
-    for bar in bars:
-        h = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2, h + 0.01,
-                f"{h:.3f}", ha="center", va="bottom", fontsize=9)
+for idx, bar in enumerate(b1):
+    h = bar.get_height()
+    label_text = "n/a" if pd.isna(micro_vals[idx]) else f"{h:.3f}"
+    ax.text(bar.get_x() + bar.get_width() / 2, h + 0.01,
+            label_text, ha="center", va="bottom", fontsize=9)
+for bar in b2:
+    h = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2, h + 0.01,
+            f"{h:.3f}", ha="center", va="bottom", fontsize=9)
 
 ax.set_xticks(x2)
 ax.set_xticklabels(model_names, fontsize=10)
@@ -220,12 +293,14 @@ print("Saved fig2_overall_metrics.png")
 
 
 # FIG 3 — Precision vs Recall per label (DistilBERT vs best baseline)
-# Show LR and DistilBERT side by side; best baseline is SVM if available else LR
+# Show best baseline, DistilBERT, and Hybrid side by side when available
 best_base = "TF-IDF + SVM" if "TF-IDF + SVM" in all_models else "TF-IDF + LR"
-compare_pair = [best_base, "DistilBERT"]
+compare_pair = [best_base, "DistilBERT", "Hybrid"]
 compare_pair = [m for m in compare_pair if m in all_models]
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+fig, axes = plt.subplots(1, len(compare_pair), figsize=(7 * len(compare_pair), 5), sharey=True)
+if len(compare_pair) == 1:
+    axes = [axes]
 
 for ax, mname in zip(axes, compare_pair):
     p_vals = all_models[mname]["precision"]
@@ -287,6 +362,21 @@ if os.path.exists(year_csv):
     ax.legend(loc="upper left", fontsize=9, ncol=2, framealpha=0.9)
     ax.yaxis.grid(True, linestyle="--", alpha=0.3)
     ax.set_axisbelow(True)
+
+    if "Hybrid" in all_models:
+        hybrid_macro = all_models["Hybrid"].get("macro_f1", np.nan)
+        hybrid_text = f"Hybrid macro F1: {hybrid_macro:.3f}" if not pd.isna(hybrid_macro) else "Hybrid macro F1: n/a"
+        ax.text(
+            0.995,
+            0.02,
+            hybrid_text,
+            transform=ax.transAxes,
+            ha="right",
+            va="bottom",
+            fontsize=9,
+            bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "#bbbbbb"},
+        )
+
     plt.tight_layout()
     plt.savefig("results/figures/fig4_temporal_trends.png", dpi=300, bbox_inches="tight")
     plt.close()
@@ -328,6 +418,21 @@ if os.path.exists(speaker_csv):
         ax.set_title("Top 15 speakers by total tactic use", pad=14)
         ax.set_xlabel("")
         ax.set_ylabel("")
+
+        if "Hybrid" in all_models:
+            hybrid_macro = all_models["Hybrid"].get("macro_f1", np.nan)
+            hybrid_text = f"Hybrid macro F1: {hybrid_macro:.3f}" if not pd.isna(hybrid_macro) else "Hybrid macro F1: n/a"
+            ax.text(
+                0.99,
+                -0.08,
+                hybrid_text,
+                transform=ax.transAxes,
+                ha="right",
+                va="top",
+                fontsize=9,
+                bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "#bbbbbb"},
+            )
+
         plt.xticks(rotation=30, ha="right")
         plt.yticks(rotation=0)
         plt.tight_layout()
@@ -341,7 +446,7 @@ else:
 
 
 
-# FIG 6 — Error analysis: FP and FN per label (DistilBERT)
+# FIG 6 — Error analysis: DistilBERT FP/FN + Hybrid proxy error profile
 error_csv = "results/error_analysis.csv"
 if os.path.exists(error_csv):
     err_df  = pd.read_csv(error_csv)
@@ -355,7 +460,9 @@ if os.path.exists(error_csv):
     x6   = np.arange(n_labels)
     bw6  = 0.35
 
-    fig, ax = plt.subplots(figsize=(11, 5))
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=False)
+
+    ax = axes[0]
     ax.bar(x6 - bw6 / 2, fp_vals, bw6, label="False Positives",
            color="#e15759", edgecolor="white")
     ax.bar(x6 + bw6 / 2, fn_vals, bw6, label="False Negatives",
@@ -370,10 +477,35 @@ if os.path.exists(error_csv):
     ax.set_xticks(x6)
     ax.set_xticklabels(LABEL_SHORT, fontsize=10)
     ax.set_ylabel("Count")
-    ax.set_title("DistilBERT error analysis: false positives and false negatives per label")
+    ax.set_title("DistilBERT: false positives and false negatives")
     ax.legend(fontsize=10)
     ax.yaxis.grid(True, linestyle="--", alpha=0.4)
     ax.set_axisbelow(True)
+
+    ax2 = axes[1]
+    if "Hybrid" in all_models:
+        hybrid_precision = all_models["Hybrid"]["precision"]
+        hybrid_recall = all_models["Hybrid"]["recall"]
+        hybrid_fp_proxy = 1 - hybrid_precision
+        hybrid_fn_proxy = 1 - hybrid_recall
+
+        ax2.bar(x6 - bw6 / 2, hybrid_fp_proxy, bw6, label="1 - Precision",
+                color="#e15759", edgecolor="white")
+        ax2.bar(x6 + bw6 / 2, hybrid_fn_proxy, bw6, label="1 - Recall",
+                color="#4e79a7", edgecolor="white")
+        ax2.set_ylim(0, 1.0)
+        ax2.set_title("Hybrid proxy error profile")
+        ax2.legend(fontsize=10)
+        ax2.set_ylabel("Rate")
+    else:
+        ax2.text(0.5, 0.5, "Hybrid metrics unavailable", ha="center", va="center", transform=ax2.transAxes)
+        ax2.set_title("Hybrid proxy error profile")
+
+    ax2.set_xticks(x6)
+    ax2.set_xticklabels(LABEL_SHORT, fontsize=10)
+    ax2.yaxis.grid(True, linestyle="--", alpha=0.4)
+    ax2.set_axisbelow(True)
+
     plt.tight_layout()
     plt.savefig("results/figures/fig6_error_analysis.png", dpi=300, bbox_inches="tight")
     plt.close()
