@@ -27,11 +27,21 @@ MODEL_ORDER = [
 ]
 
 
-def latest_dir(prefix: str) -> Path:
+def latest_dir(prefix: str, required_files: list[str] | None = None) -> Path:
+    required_files = required_files or []
     matches = sorted(glob.glob(f"results/{prefix}_*/"))
     if not matches:
         raise FileNotFoundError(f"No folder found matching results/{prefix}_*/")
-    return Path(matches[-1])
+
+    for folder in reversed(matches):
+        folder_path = Path(folder)
+        if all((folder_path / req).exists() for req in required_files):
+            return folder_path
+
+    missing = ", ".join(required_files) if required_files else "<none>"
+    raise FileNotFoundError(
+        f"No results/{prefix}_* folder contains required files: {missing}"
+    )
 
 
 def per_label_from_predictions(preds_csv: Path) -> dict[str, dict[str, float]]:
@@ -65,7 +75,7 @@ def per_label_from_predictions(preds_csv: Path) -> dict[str, dict[str, float]]:
 
 
 def load_distilbert() -> tuple[dict, dict[str, dict[str, float]]]:
-    distil_dir = latest_dir("distilbert")
+    distil_dir = latest_dir("distilbert", required_files=["test_metrics.json", "test_predictions.csv"])
     with open(distil_dir / "test_metrics.json", "r", encoding="utf-8") as f:
         aggregate = json.load(f)
     per_label = per_label_from_predictions(distil_dir / "test_predictions.csv")

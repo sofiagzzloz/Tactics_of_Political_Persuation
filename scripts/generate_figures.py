@@ -67,11 +67,19 @@ plt.rcParams.update({
 
 
 # Helpers
-def latest(prefix):
+def latest(prefix, required_files=None):
+    required_files = required_files or []
     folders = sorted(glob.glob(f"results/{prefix}_*/"))
     if not folders:
         raise FileNotFoundError(f"No results/{prefix}_* folder found.")
-    return folders[-1]
+
+    for folder in reversed(folders):
+        if all(os.path.exists(os.path.join(folder, req)) for req in required_files):
+            return folder
+
+    raise FileNotFoundError(
+        f"No results/{prefix}_* folder has required files: {', '.join(required_files)}"
+    )
 
 
 def per_label_metrics(preds_csv):
@@ -156,7 +164,7 @@ def load_hybrid_metrics():
 
 
 # Load all model results
-bert_dir      = latest("distilbert")
+bert_dir      = latest("distilbert", required_files=["test_metrics.json", "test_predictions.csv"])
 baselines_dir = latest("baselines")
 
 all_models = {}

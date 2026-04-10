@@ -1,25 +1,45 @@
-# NLP Dataset Pipeline (Speeches)
+# Political Persuasion NLP Pipeline
 
-This repo builds a clean, segmented, multi-label annotation dataset from political speeches.
+This repository contains the full workflow for a political speech NLP project:
+- dataset building and metadata extraction,
+- automated annotation,
+- model training/evaluation,
+- figure/table generation,
+- runnable hybrid model artifacts for reproducible inference.
 
-## Folder Structure
+## Project Outputs
 
+- **Dataset artifacts** in `dataset/` (cleaned and labeled CSVs).
+- **Model and analysis outputs** in `results/`.
+- **Runnable hybrid model package** in each `results/hybrid_*/artifacts/` folder.
+
+## Repository Structure
+
+```text
+data/                     # raw/cleaned/segmented text files, URLs, metadata
+dataset/                  # final CSV datasets and kappa reports
+results/                  # training runs, comparisons, figures, analyses
+scripts/                  # all pipeline/training/evaluation utilities
+splits/                   # fixed train/val/test splits
+README.md
+requirements.txt
 ```
-data/
-  raw/                 # raw .txt speeches
-  cleaned/             # cleaned .txt speeches
-  segmented/           # segmented .txt files per speech
-  urls/                # URL lists for optional downloading
-  metadata/            # metadata CSVs
 
-dataset/
-  dataset.csv
+## Environment Setup
+
+Use the project virtual environment to avoid dependency mismatches.
+
+```bash
+git clone https://github.com/sofiagzzloz/Tactics_of_Political_Persuasion.git
+cd Tactics_of_Political_Persuasion
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-## Quick Start
+## Reproducible End-to-End Workflow
 
-1) Put raw `.txt` files in `data/raw/` (manual copy works well).
-2) Run the pipeline to clean, segment, and build datasets (default is 1 sentence per segment).
+### 1) Build dataset
 
 ```bash
 python scripts/prepare_dataset.py \
@@ -30,59 +50,43 @@ python scripts/prepare_dataset.py \
   --sample-size 1000
 ```
 
-This produces:
-- `dataset/dataset.csv` (with empty labels)
-
-## Optional: Semi-Automated Download
-
-Add URLs to `data/urls/presidential_urls.txt` or `data/urls/congressional_urls.txt` (one per line), then run:
+### 2) (Optional) annotate with Ollama
 
 ```bash
-python scripts/download_from_urls.py \
-  --urls-file data/urls/presidential_urls.txt \
-  --out-dir data/raw
-
-# international sources
-python scripts/download_from_urls.py \
-  --urls-file data/urls/uk_urls.txt \
-  --out-dir data/raw
-python scripts/download_from_urls.py \
-  --urls-file data/urls/canada_urls.txt \
-  --out-dir data/raw
-python scripts/download_from_urls.py \
-  --urls-file data/urls/australia_urls.txt \
-  --out-dir data/raw
+python scripts/annotate_with_ollama.py \
+  --input dataset/dataset.csv \
+  --output dataset/dataset_annotated.csv \
+  --model gpt-oss:20b \
+  --ruleset balanced
 ```
 
-## Optional Metadata
-
-If you have metadata, put a CSV at `data/metadata/speeches_metadata.csv` with a `file_name` column
-matching raw filenames and any extra columns you want (e.g., `speaker`, `year`, `speech_type`).
-The pipeline will merge these columns automatically.
-
-You can generate metadata automatically from the URL lists:
+### 3) Create fixed splits
 
 ```bash
-python scripts/extract_metadata.py \
-  --urls data/urls/presidential_urls.txt data/urls/congressional_urls.txt \
-        data/urls/uk_urls.txt data/urls/canada_urls.txt data/urls/australia_urls.txt \
-  --out data/metadata/speeches_metadata.csv
+python scripts/create_splits.py \
+  --data-path dataset/dataset_annotated_final.csv \
+  --output-dir splits \
+  --seed 42
+```
 
-## International URL Lists
-
-Build UK, Canada, and Australia URL lists (official government sources):
+### 4) Train hybrid model + export runnable artifacts
 
 ```bash
-python scripts/build_international_url_lists.py \
-  --uk-pages 5 --uk-limit 100 \
-  --canada-pages 5 --canada-limit 100 \
-  --australia-pages 5 --australia-limit 100
-```
+python scripts/hybrid_model.py \
+  --split-dir splits \
+  --output-root results
 ```
 
-## Label Columns
+### 5) Build comparison tables + figures
 
-The annotation file uses canonical labels:
+```bash
+python scripts/compare_all_models.py
+python scripts/generate_figures.py
+```
+
+## Label Taxonomy
+
+Binary labels (`1` present, `0` absent):
 - `emotion_appeal`
 - `authority_appeal`
 - `polarization`
@@ -90,57 +94,58 @@ The annotation file uses canonical labels:
 - `exaggeration`
 - `rhetorical_framing`
 
-Use `1` for present, `0` for absent.
+## Runnable Hybrid Model (Inference)
 
-## Ollama Auto-Annotation
+After training, each run creates:
 
-Annotate rows using a local Ollama model (default: `gpt-oss:20b`):
-
-```bash
-python scripts/annotate_with_ollama.py \
-  --input dataset/dataset.csv \
-  --output dataset/dataset_annotated.csv \
-  --model gpt-oss:20b \
-  --max-rows 200
+```text
+results/hybrid_YYYYMMDD_HHMMSS/
+  hybrid_results.csv
+  results.json
+  test_predictions.csv
+  artifacts/
+    tfidf_vectorizer.joblib
+    classifier_<label>.joblib
+    thresholds.json
+    metadata.json
 ```
 
-Options:
-- `--start-row` and `--max-rows` for chunked annotation runs
-- `--ruleset` controls strictness: `conservative`, `balanced` (default), `recall`
-- `--use-legacy-columns` to also mirror values into `emotional`, `authority`, `framing`
-- `--dry-run` for pipeline validation without calling Ollama
-
-## Runnable Hybrid Model Artifacts
-
-Train the hybrid model and export runnable artifacts:
+### Single-text inference
 
 ```bash
-python scripts/hybrid_model.py
-```
-
-This creates a timestamped folder like `results/hybrid_YYYYMMDD_HHMMSS/` containing:
-- `hybrid_results.csv` and `results.json` (evaluation summaries)
-- `test_predictions.csv` (prediction-level outputs)
-- `artifacts/` with:
-  - `tfidf_vectorizer.joblib`
-  - `classifier_<label>.joblib` for each label
-  - `thresholds.json`
-  - `metadata.json`
-
-Run inference on a single text:
-
-```bash
+LATEST=$(ls -dt results/hybrid_* | head -n 1)
 python scripts/infer_hybrid_model.py \
-  --artifacts-dir results/hybrid_YYYYMMDD_HHMMSS/artifacts \
+  --artifacts-dir "$LATEST/artifacts" \
   --text "We must act now to protect our families."
 ```
 
-Run inference on a CSV:
+### CSV batch inference
 
 ```bash
+LATEST=$(ls -dt results/hybrid_* | head -n 1)
 python scripts/infer_hybrid_model.py \
-  --artifacts-dir results/hybrid_YYYYMMDD_HHMMSS/artifacts \
+  --artifacts-dir "$LATEST/artifacts" \
   --input-csv dataset/dataset_for_annotation.csv \
   --text-column text \
   --output results/hybrid_predictions.csv
 ```
+
+## Key Report Artifacts
+
+- `results/comparisons/model_leaderboard.csv`
+- `results/comparisons/model_summary.csv`
+- `results/figures/fig1_per_label_f1.png`
+- `results/figures/fig2_overall_metrics.png`
+- `results/figures/fig3_precision_recall.png`
+- `results/figures/fig6_error_analysis.png`
+
+## Hugging Face Repositories
+
+- Dataset repo: `sofiagzzloz/political-persuasion-dataset`
+- Model repo: `sofiagzzloz/political-persuasion-model`
+
+## Notes for Reproducibility
+
+- Always run scripts with the project `.venv` Python executable.
+- The string `results/hybrid_YYYYMMDD_HHMMSS/...` is a placeholder; use an actual run folder (or `LATEST=$(ls -dt results/hybrid_* | head -n 1)`).
+- For deterministic behavior, keep `--seed 42` and reuse `splits/`.
